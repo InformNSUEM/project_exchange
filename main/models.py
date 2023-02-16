@@ -105,7 +105,7 @@ class Group(models.Model):
 #Дисциплина
 class Disciplines(models.Model):
 
-    name = models.CharField("Наименование", max_length = 50)
+    name = models.CharField("Наименование", max_length = 255)
 
     def __str__(self) -> str:
         return self.name
