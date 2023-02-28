@@ -89,18 +89,6 @@ class Department(models.Model):
         short_fio = f'{short_fio[0]} {short_fio[1][0:1]}.{short_fio[2][0:1]}.'
         return short_fio
 
-#Учебная группа
-class Group(models.Model):
-
-    name = models.CharField("Наимнование", max_length = 10)
-
-    def __str__(self) -> str:
-        return self.name
-
-    class Meta:
-        
-        verbose_name = "Учебная группа"
-        verbose_name_plural = "Учебная группа"
 
 #Дисциплина
 class Disciplines(models.Model):
@@ -114,6 +102,55 @@ class Disciplines(models.Model):
         
         verbose_name = "Дисциплина"
         verbose_name_plural = "Дисциплины"
+
+#Уровень образования
+class EduLevel(models.Model):
+
+    name = models.CharField("Наименование", max_length = 50)
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+
+        verbose_name = "Уровень образования"
+        verbose_name_plural = "Уровень образования"
+
+#Направление подготовки
+class Program(models.Model):
+
+    code = models.CharField("Код" ,max_length= 8)
+    name = models.CharField("Наименование", max_length=100)
+    eduLevel = models.ForeignKey(EduLevel, verbose_name = "Уровень образования", on_delete = models.CASCADE)
+    department = models.ForeignKey(Department, verbose_name = "Ответственное подразделение" ,on_delete = models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.code + " " + self.name
+
+    class Meta:
+        
+        verbose_name = "Направление подготовки"
+        verbose_name_plural = "Направления подготовки"
+
+    def makeProfram(self):
+
+        program = self.code + " " + self.name
+
+        return program
+    
+#Учебная группа
+class Group(models.Model):
+
+    name = models.CharField("Наимнование", max_length = 10)
+    program = models.ForeignKey(Program, verbose_name = "Направление подготовки", on_delete = models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.name
+
+    class Meta:
+        
+        verbose_name = "Учебная группа"
+        verbose_name_plural = "Учебная группа"
 
 
 
@@ -160,18 +197,7 @@ class DepthTaskState(models.Model):
         verbose_name = "Глубина постановки задачи"
         verbose_name_plural = "Глубина постановки задачи"
 
-#Уровень образования
-class EduLevel(models.Model):
 
-    name = models.CharField("Наименование", max_length = 50)
-
-    def __str__(self) -> str:
-        return self.name
-
-    class Meta:
-
-        verbose_name = "Уровень образования"
-        verbose_name_plural = "Уровень образования"
 
 #Формат предполагаемого результата
 class FormatResult(models.Model):
@@ -269,7 +295,7 @@ class ApplicationAuthority(models.Model):
     research_purpose = models.CharField("Цель будущего исследования", max_length = 255)
     research_objectives = models.TextField("Задачи исследования")
     key_words = models.ManyToManyField(KeyWords, verbose_name = "Ключевые слова", related_name = "applicationAuthority_keyWords")
-    programm = models.CharField("Направления, специальности", max_length = 150)
+    program = models.CharField("Направления, специальности", max_length = 150)
     wish_result = models.CharField("Ожидаемый результат", max_length = 150)
     other_info = models.TextField("Прочая информация", blank=True, null=True)
 
@@ -295,7 +321,6 @@ class PackageRequestProcessing(models.Model):
     depthTask = models.ManyToManyField(DepthTask, verbose_name = "Глубина проработки задачи", related_name = "packageRequestProcessing_depthTash")
     completion_dates = models.CharField("Сроки завершения работы над задачей", max_length = 20)
     research_purpose = models.CharField("Цель будущего исследования", max_length = 255)
-    group = models.ManyToManyField(Group, verbose_name = "Группа", related_name = "packageRequestProcessing_groups")
     comment = models.TextField("Комментарий")
     discipline = models.ManyToManyField(Disciplines, verbose_name = "Дисциплина", related_name = "packageRequestProcessing_discipline")
     department  = models.ManyToManyField(Department, verbose_name = "Ответственное за реализацию подразделение", related_name = "packageRequestProcessing_department")
@@ -327,7 +352,6 @@ class InternalApplicationProcessing(models.Model):
     depthTask = models.ManyToManyField(DepthTask, verbose_name = "Глубина проработки задачи", related_name = "internalApplicationProcessing_depthTash")
     completion_dates = models.CharField("Сроки завершения работы над задачей", max_length = 20)
     research_purpose = models.CharField("Цель будущего исследования", max_length = 255)
-    group = models.ManyToManyField(Group, verbose_name = "Группа", related_name = "internalApplicationProcessing_groups")
     comment = models.TextField("Комментарий")
     discipline = models.ManyToManyField(Disciplines, verbose_name = "Дисциплина", related_name = "internalApplicationProcessing_discipline")
     department  = models.ManyToManyField(Department, verbose_name = "Ответственное за реализацию подразделение", related_name = "internalApplicationProcessing_department")
@@ -358,7 +382,6 @@ class ApplicationAuthorityProcessing(models.Model):
     depthTask = models.ManyToManyField(DepthTask, verbose_name = "Глубина проработки задачи", related_name = "applicationAuthorityProcessing_depthTash")
     completion_dates = models.CharField("Сроки завершения работы над задачей", max_length = 20)
     research_purpose = models.CharField("Цель будущего исследования", max_length = 255)
-    group = models.ManyToManyField(Group, verbose_name = "Группа", related_name = "applicationAuthorityProcessing_groups")
     comment = models.TextField("Комментарий")
     discipline = models.ManyToManyField(Disciplines, verbose_name = "Дисциплина", related_name = "applicationAuthorityProcessing_discipline")
     department  = models.ManyToManyField(Department, verbose_name = "Ответственное за реализацию подразделение", related_name = "applicationAuthorityProcessing_department")

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import University, Department, Group, Disciplines, KeyWords, DepthTask, DepthTaskState, EduLevel, FormatResult, CustomerGoal, PackageRequest, InternalApplication, ApplicationAuthority, PackageRequestProcessing, InternalApplicationProcessing, ApplicationAuthorityProcessing, CustomerType, Customer
+from .models import University, Department, Group, Disciplines, KeyWords, DepthTask, DepthTaskState, EduLevel, FormatResult, CustomerGoal, PackageRequest, InternalApplication, ApplicationAuthority, PackageRequestProcessing, InternalApplicationProcessing, ApplicationAuthorityProcessing, CustomerType, Customer, Program
 
 # Register your models here.
 @admin.register(University)
@@ -12,10 +12,15 @@ class DepartmentAdmin(admin.ModelAdmin):
 
     list_display = ("name" ,"short_name", "head_fio", "university")
 
+@admin.register(Program)
+class ProgramAdmin(admin.ModelAdmin):
+
+    list_display = ("code" ,"name")
+
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
 
-    list_display = ("name",)
+    list_display = ("name", "program")
 
 @admin.register(Disciplines)
 class DisciplinesAdmin(admin.ModelAdmin):
@@ -76,7 +81,7 @@ class InternalApplicationAdmin(admin.ModelAdmin):
 @admin.register(ApplicationAuthority)
 class ApplicationAuthorityAdmin(admin.ModelAdmin):
 
-    list_display = ("customer",  "department_authority", "authority_fio", "authority_post", "phone_number", "mail", "task_formulation", "problem_formulation", "relevance", "completion_dates", "research_purpose", "research_objectives", "programm", "wish_result", "other_info")
+    list_display = ("customer",  "department_authority", "authority_fio", "authority_post", "phone_number", "mail", "task_formulation", "problem_formulation", "relevance", "completion_dates", "research_purpose", "research_objectives", "program", "wish_result", "other_info")
 
 
 @admin.register(PackageRequestProcessing)
