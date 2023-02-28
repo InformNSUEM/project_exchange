@@ -1,6 +1,6 @@
 /**
-* Template Name: FlexStart - v1.9.0
-* Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+* Template Name: Appland - v4.10.0
+* Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -23,10 +23,13 @@
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
-    if (all) {
-      select(el, all).forEach(e => e.addEventListener(type, listener))
-    } else {
-      select(el, all).addEventListener(type, listener)
+    let selectEl = select(el, all)
+    if (selectEl) {
+      if (all) {
+        selectEl.forEach(e => e.addEventListener(type, listener))
+      } else {
+        selectEl.addEventListener(type, listener)
+      }
     }
   }
 
@@ -63,11 +66,6 @@
   const scrollto = (el) => {
     let header = select('#header')
     let offset = header.offsetHeight
-
-    if (!header.classList.contains('header-scrolled')) {
-      offset -= 10
-    }
-
     let elementPos = select(el).offsetTop
     window.scrollTo({
       top: elementPos - offset,
@@ -156,11 +154,12 @@
   });
 
   /**
-   * Clients Slider
+   * Gallery Slider
    */
-  new Swiper('.clients-slider', {
+  new Swiper('.gallery-slider', {
     speed: 400,
     loop: true,
+    centeredSlides: true,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false
@@ -173,74 +172,29 @@
     },
     breakpoints: {
       320: {
-        slidesPerView: 2,
-        spaceBetween: 40
-      },
-      480: {
-        slidesPerView: 3,
-        spaceBetween: 60
+        slidesPerView: 1,
+        spaceBetween: 30
       },
       640: {
-        slidesPerView: 4,
-        spaceBetween: 80
+        slidesPerView: 3,
+        spaceBetween: 30
       },
       992: {
-        slidesPerView: 6,
-        spaceBetween: 120
+        slidesPerView: 5,
+        spaceBetween: 30
+      },
+      1200: {
+        slidesPerView: 7,
+        spaceBetween: 30
       }
     }
   });
 
   /**
-   * Porfolio isotope and filter
+   * Initiate gallery lightbox 
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-      });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        aos_init();
-      }, true);
-    }
-
-  });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfokio-lightbox'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
+  const galleryLightbox = GLightbox({
+    selector: '.gallery-lightbox'
   });
 
   /**
@@ -266,7 +220,8 @@
       },
 
       1200: {
-        slidesPerView: 3,
+        slidesPerView: 2,
+        spaceBetween: 40
       }
     }
   });
@@ -274,16 +229,13 @@
   /**
    * Animation on scroll
    */
-  function aos_init() {
+  window.addEventListener('load', () => {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
       once: true,
       mirror: false
     });
-  }
-  window.addEventListener('load', () => {
-    aos_init();
   });
 
-})();
+})()

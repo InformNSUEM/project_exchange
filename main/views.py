@@ -7,6 +7,14 @@ class MainView(TemplateView):
     template_name = "main/index.html"
 
 
-class GalaryView(TemplateView):
+class GalaryNsuemView(TemplateView):
 
-    template_name = "main/gal.html"
+    template_name = "main/nsuem_gal.html"
+
+class BaseOrderView(TemplateView):
+
+    template_name = "main/base_gal.html"
+
+class AuthorityOrderView(TemplateView):
+
+    template_name = "main/orders_gal.html"

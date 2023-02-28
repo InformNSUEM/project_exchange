@@ -1,822 +1,412 @@
-<!--<!DOCTYPE html>-->
 {% load static %}
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Интеллектуальная биржа НГУЭУ</title>
-  <meta content="" name="description">
-
-  <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="{% static 'main/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'main/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+<!--  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+  
   <!-- Vendor CSS Files -->
   <link href="{% static 'main/vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'main/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'main/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'main/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'main/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static 'main/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: FlexStart - v1.9.0
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
 
-  <header id="header" class="header fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-          <img src="{% static 'main/img/logo.png' %}" alt="">
-          <span style="font: Helvetica">Smart Exchange</span>
-      </a>
-        
+      <div class="logo">
+        <a href="index.html"><img src="{% static 'main/img/logo.png' %}" alt=""></a> 
+        <span style="font-weight: 600; font-size: 26px" >  Интеллектуальная биржа</span>
+      </div>
+
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Главная</a></li>
-          <li><a class="nav-link scrollto" href="#steps">Этапы</a></li>
-          <li><a class="nav-link scrollto" href="#values">Ценность</a></li>
-          <li><a class="nav-link scrollto" href="#features">Возможности</a></li>
-          <li><a class="nav-link scrollto" href="#interfaces">Интерфейсы</a></li>
-          <li><a class="nav-link scrollto" href="#team">Команда</a></li>
+          <li><a class="nav-link scrollto" href="#features">Этапы</a></li>
+          <li><a class="nav-link scrollto" href="#values">Возможности платформы</a></li>
+          <li><a class="nav-link scrollto" href="#gallery">Просмотр заявок</a></li>
+          <li><a class="nav-link scrollto" href="#faq">О платформе</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Контакты</a></li>
+<!--          <li><a class="getstarted scrollto" href="#features">Get Started</a></li>-->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
+      </nav><!-- .navbar -->
 
     </div>
-  </header>
+  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
+  <section id="hero" class="d-flex align-items-center">
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-7 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Интеллектуальная биржа <span style="color: blueviolet">Третья миссия университета</span></h1>
-          <br>
-          <h3 data-aos="fade-up" data-aos-delay="400">Мы трансформируем запросы региональных органов власти и бизнеса в форматы, понятные Университетам и индивидуальным исследователям</h3>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="{% url 'galary' %}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center" style="background-color: darkslateblue">
-                <span>Посмотреть демо</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
+        <div class="col-lg-7 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
+          <div>
+            <h1>Интеллектуальная биржа <br> <span style="color: darkviolet">Третья миссия университета</span></h1>
+            
+            <br>
+            <h2>Мы трансформируем запросы региональных органов власти и бизнеса в форматы, понятные Университетам и индивидуальным исследователям</h2>
+            
+            <p>«Место встречи» поставщиков актуальных задач – органов власти, подведомственных учреждений, институтов развития, крупных коммерческих организаций (заказчиков) – с одной стороны, и научных и образовательных организаций, заинтересованных в повышении практикоориентированности своей деятельности (исполнителей) – с другой.</p>
+            <a href="#gallery" class="download-btn"><i class="bx bx-envelope"></i> Открыть заявки</a>
           </div>
         </div>
-        <div class="col-lg-5 hero-img" data-aos="zoom-out" data-aos-delay="200">
+        <div class="col-lg-5 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
           <img src="{% static 'main/img/hero-img.png' %}" class="img-fluid" alt="">
         </div>
       </div>
     </div>
 
-  </section>
+  </section><!-- End Hero -->
 
   <main id="main">
-    
-    <section id="steps" class="features">
 
-      <div class="container" data-aos="fade-up">
+    <!-- ======= App Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container">
 
-        <header class="section-header">
-<!--          <h2></h2>-->
-          <p>Этапы экспертной трансформации запроса</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-6">
-            <img src="{% static 'main/img/features.png' %}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
-            <div class="row align-self-center gy-4">
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h3>Определение минимального <span style='color: green'>уровня квалификации</span> исполнителя</h3>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-journal"></i>
-                    <h3>Определение <span style='color: orange'>форматов выполнения работы</span> <span style='color: lightblue'>(ВКР, НИР, Реферат)</span></h3>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-box"></i>
-                  <h3>Определение <span style='color: rebeccapurple'>предметных областей</span></h3>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-calendar-date"></i>
-                  <h3>Определение <span style='color: darkturquoise'>сроков и этапов</span> выполнения работы</h3>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-people-fill"></i>
-                  <h3>Подбор <span style='color: darkorange'>авторского коллектива</span> для реализации исследования</h3>
-                </div>
-              </div>
-
-              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
-                <div class="feature-box d-flex align-items-center">
-                  <i class="bi bi-bullseye"></i>
-                  <h3>Осуществление <span style='color: cornflowerblue'>поиска совпадений</span> с ранее заявленными работами</h3>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-    </section>
-    <section id="values" class="values">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <!--<h2>Наша ценность</h2>-->
-          <p>Ценность Интеллектуальной биржи</p>
-        </header>
-
-        <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="box">
-              <img src="{% static 'main/img/values-1.png' %}" class="img-fluid" alt="">
-              <h3>Для заказчика</h3>
-              <p>Возможность передачи актуальных проектов, задач, тематик исследований на "интеллектуальный аутсорсинг" авторским коллективам, снижение временных и финансовых издержек на реализацию R&D-проектов</p>
-              
-            </div>
-          </div>
-          
-          
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
-            <div class="box">
-              <img src="{% static 'main/img/values-2.png' %}" class="img-fluid" alt="">
-              <h3>Для Университетов</h3>
-              <p>Повышение востребованности и доходов от выполнения НИР, выявление и поддержка талантов, развитие внешних связей, повышение эффективности трудоустройства выпускников</p>
-            </div>
-          </div>
-
-         
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-            <div class="box">
-              <img src="{% static 'main/img/values-3.png' %}" class="img-fluid" alt="">
-              <h3>Для региона</h3>
-              <p>Системное вовлечение вузов в социально-экономическое развитие региона, организация взаимодействия органов власти, бизнеса и образовательных организаций</p>
-            </div>
-          </div>
-
-
+        <div class="section-title">
+          <h3 style=" align-content: center; font-weight: 700; margin-top: 5px;">Этапы экспертной трансформации запроса органа власти</h3>
         </div>
 
-      </div>
-
-    </section><!-- End Values Section -->
-
-    <!-- ======= Counts Section ======= -->
-<!--
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Happy Clients</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Projects</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-headset" style="color: #15be56;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-people" style="color: #bb0852;"></i>
-              <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> End Counts Section 
--->
-
-    <!-- ======= Features Section ======= -->
-     <!-- / row -->
-
-        <!-- Feature Tabs -->
-        <section id="features" class="features">
-        <div class="container" data-aos="fade-up">
-        <div class="row feture-tabs" data-aos="fade-up">
-          <div class="col-lg-7">
-            <h3>Возможности Интеллектуальной биржи</h3>
-
-            <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
-              <li>
-                <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Для заказчика</a>
-              </li>
-              <li>
-                <a class="nav-link" data-bs-toggle="pill" href="#tab2">Для исполнителей</a>
-              </li>
-<!--
-              <li>
-                <a class="nav-link" data-bs-toggle="pill" href="#tab3">Для экспертов</a>
-              </li>
--->
-            </ul><!-- End Tabs -->
-
-            <!-- Tab Content -->
-            <div class="tab-content">
-              <div class="tab-pane fade show active" id="tab1">
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Загрузка актуальных проектов, задач, тематик исследований</h4>
-                </div>
-                <p>В том числе просмотр аналогичных запросов, поданных от других заказчиков</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Просмотр перечня исполнителей, включивших запросы в свою деятельность и текущий статус</h4>
-                </div>
-                                 
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Просмотр трансформированных запросов</h4>
-                </div>
-                <p>Формулировок рекомендуемых тем, соответствующим образовательным стандартам, классифицированных по направлениям (специальностям) подготовки, уровню подготовки и иным критериям)</p>
-                                 
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Возможность запроса контактных сведений исполнителей работ</h4>
-                </div>
-                <p>Студентов, преподавателей, исследователей, для организации дальнейшего взаимодействия (практика, стажировка, трудоустройство, заказ научно-исследовательской работы</p>
-                
-              </div><!-- End Tab 1 Content -->
-
-              <div class="tab-pane fade show" id="tab2">
-
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>"Принятие" в работу "запросов" с установлением статусов</h4>
-                </div>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Коммуникация среди исполнителей аналогичных "запросов" для установления коллабораций</h4>
-                </div>
-                <p>Проектная деятельность студентов, совместные исследовательские коллективы и т.д.), обсуждения результатов</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Просмотр результатов других исполнителей</h4>
-                </div>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Возможность оценивания результатов других исполнителей ("лайки")</h4>
-                </div>
-                <p>В том числе просмотр других исполнителей, принявших аналогичные "запросы", с функцией запроса контактов</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Взаимодействие в Заказчиками</h4>
-                </div>
-                <p>Возможность запроса контактных сведений заказчиков, направления им предложений по практике, стажировке, трудоустройству, выполнению консалтинговых услуг, научно-исследовательских работ и т.д.</p>
-              </div>
-              
-              <!-- End Tab 2 Content -->
-<!--
-
-              <div class="tab-pane fade show" id="tab3">
-              
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Тема</h4>
-                </div>
-                <p>Текст</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Тема</h4>
-                </div>
-                <p>Текст</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Тема</h4>
-                </div>
-                <p>Текст</p>
-                
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Тема</h4>
-                </div>
-                <p>Текст</p>
-
-                
-                
-              </div><!-- End Tab 3 Content -->
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-5">
-            <img src="{% static 'main/img/features-2.png' %}" class="img-fluid" alt="">
-          </div>
-          </div>
-            </section>
-
-        </div><!-- End Feature Tabs -->
-
-        <!-- Feature Icons -->
-<!--
-        <div class="row feature-icons" data-aos="fade-up">
-          <h3>Ratione mollitia eos ab laudantium rerum beatae quo</h3>
-
-          <div class="row">
-
-            <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
-              <img src="assets/img/features-3.png" class="img-fluid p-4" alt="">
-            </div>
-
-            <div class="col-xl-8 d-flex content">
-             
-             
-              <div class="row align-self-center gy-4">
-                
+        <div class="row no-gutters">
+          <div class="col-xl-8 d-flex align-items-stretch order-2 order-lg-1">
+            <div class="content d-flex flex-column justify-content-center">
+              <div class="row">
                 <div class="col-md-6 icon-box" data-aos="fade-up">
-                  <i class="ri-line-chart-line"></i>
-                  <div>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                  </div>
+                  <i class="bx bx-receipt"></i>
+                    <h4>Определение <span style="color: lightseagreen">минимального уровня</span> квалификации исполнителя</h4>
+                  <p>Студент, аспирант, исследователь, ...</p>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <i class="ri-stack-line"></i>
-                  <div>
-                    <h4>Ullamco laboris nisi</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                  </div>
+                  <i class="bx bx-cube-alt"></i>
+                    <h4>Определение <span style="color: orange">форматов выполнения</span> работы</h4>
+                  <p>Выпускная работа, научная работа, реферат, ...</p>
                 </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <i class="ri-brush-4-line"></i>
-                  <div>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                  </div>
+                  <i class="bx bx-images"></i>
+                    <h4>Определение <span style="color: deepskyblue">предметных областей</span></h4>
+                  <p>Экономика, юриспруденция, информационные технологии ...</p>
                 </div>
-
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <i class="ri-magic-line"></i>
-                  <div>
-                    <h4>Beatae veritatis</h4>
-                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-                  <i class="ri-command-line"></i>
-                  <div>
-                    <h4>Molestiae dolor</h4>
-                    <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
-                  </div>
-                </div>
-
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-                  <i class="ri-radar-line"></i>
-                  <div>
-                    <h4>Explicabo consectetur</h4>
-                    <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
-                  </div>
+                  <i class="bx bx-id-card"></i>
+                  <h4>Осуществление <span style="color: darkturquoise">поиска совпадений</span> с ранее заявленными работами</h4>
+<!--                  <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>-->
                 </div>
-
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bx bx-shield"></i>
+                    <h4>Определение <span style="color: orange">сроков и этапов</span> выполнения работы</h4>
+<!--                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>-->
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bx bx-atom"></i>
+                    <h4>Подбор <span style="color: darkviolet">авторского коллектива</span> для реализации исследования</h4>
+<!--                  <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>-->
+                </div>
               </div>
             </div>
-
           </div>
-
-        </div> End Feature Icons 
--->
-
-      </div>
-
-    </section><!-- End Features Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="interfaces" class="services">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h2>Демонстрационная версия</h2>
-          <p>Основные интерфейсы интеллектуальной биржи</p>
-        </header>
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-8" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-box blue">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Личный кабинет заказчика</h3>
-              <p>Регистрация и управление запросами на проведение исследования, просмотр статистики о востребованности исполнителями</p>
-              <a href="/gal/" class="read-more"><span>В разработке</span> <i class="bi bi-hourglass-bottom"></i></i></a>
-            </div>
+          <div class="image col-xl-4 d-flex align-items-stretch justify-content-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'main/img/details-4.png' %}" class="img-fluid" alt="">
           </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-box orange">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Личный кабинет эксперта</h3>
-              <p>Трансформация внешнего запроса в "ресурс биржи"</p>
-              <a href="#" class="read-more"><span>В разработке</span> <i class="bi bi-hourglass-bottom"></i></i></a>
-            </div>
-          </div>
-           
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-box purple">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Личный кабинет исследователя</h3>
-              <p>Просмотр доступных исследований, подходящих по уровню квалификации и соответствующих профессиональной сфере исполнителя</p>
-              <a href="#" class="read-more"><span>В разработке</span> <i class="bi bi-hourglass-bottom"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-box green">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Галерея запросов</h3>
-              <p>Просмотр трансформированных запросов заказчиков, доступных для исполнителей</p>
-              <a href="gal/index.html" class="read-more"><span>Открыть галерею</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-<!--
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box red">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Asperiores Commodi</h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-box purple">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Velit Doloremque.</h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-            <div class="service-box pink">
-              <i class="ri-discuss-line icon"></i>
-              <h3>Dolori Architecto</h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
--->
-
         </div>
 
       </div>
+    </section><!-- End App Features Section -->
 
-    </section><!-- End Services Section -->
+   
+   
+    <!-- ======= Details Section ======= -->
+    <section id="values" class="details">
+      <div class="container">
+        
+        <div class="row content">
+          <div class="col-md-4 order-1 order-md-2" data-aos="fade-right">
+            <img src="{% static 'main/img/details-2.png' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
+            <h3>Возможности Интеллектуальной биржи для <span style="color: lightcoral">региона в целом и на межрегиональном уровне</span></h3>
+            <p class="fst-italic"> Систематизация взаимодействия органов власти, бизнеса, научных и образовательных организаций среднего профессионального и высшего образования.
+            </p>
+            <p> Организация взаимодействия между научными и образовательными организациями (преподавателями, учеными, коллективами, студенческими командами) региона, между научными и образовательными организациями нескольких регионов по смежным тематикам.
+            </p>
+          </div>
+        </div>
 
-    <!-- ======= Pricing Section ======= 
-    <section id="pricing" class="pricing">
+        <div class="row content">
+          <div class="col-md-4" data-aos="fade-right">
+            <img src="{% static 'main/img/details-1.png' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8 pt-4" data-aos="fade-up">
+            <h3>Возможности Интеллектуальной биржи для <span style="color: blueviolet">Заказчика</span></h3>
+            <p class="fst-italic"> <b>Заказчик - </b> орган власти, подведомственное учреждение, любое иное юридическое лицо, заинтересованное во взаимодействии с научными и образовательными организациями среднего профессионального и высшего образования для решения задач Заказчика, а также с целью повышения качества и практикоориентированности образования и эффективности прикладных научных исследований.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i> Интеллектуальный аутсорсинг</li>
+              <li><i class="bi bi-check"></i> Привлечение кадров (практика, стажировки, трудоустройство)</li>
+              <li><i class="bi bi-check"></i> Организация системного взаимодействия с другими органами власти и бизнесом (в том числе из других регионов) по схожим тематикам</li>
+              <li><i class="bi bi-check"></i> Переиспользование лучших практик, результатов научных и образовательных организаций и органов власти других регионов</li>
+              <li><i class="bi bi-check"></i> Системное вовлечение научных и образовательных организаций в социально- экономическое, научно-технологическое развитие региона</li>
+              <li><i class="bi bi-check"></i> Снижение временных и финансовых издержек на реализацию проектов с аналитической и (или) исследовательской составляющей</li>
+            </ul>
+          </div>
+        </div>
+        
+        
 
-      <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-          <h2>Pricing</h2>
-          <p>Check our Pricing</p>
-        </header>
+        <div class="row content">
+          <div class="col-md-3 order-1 order-md-2" data-aos="fade-left">
+            <img src="{% static 'main/img/details-3.png' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-9 pt-5 order-2 order-md-1" data-aos="fade-up">
+            <h3>Возможности Интеллектуальной биржи для <span style="color: darkturquoise">Исполнителя</span></h3>
+            <p class="fst-italic"> <b>Исполнитель - </b> научная или образовательная организация среднего профессионального и высшего образования, использующая платформу при осуществлении образовательной, научно-исследовательской, инновационной и предпринимательской деятельности посредством организации решения задач Заказчика.
+            <ul>
+              <li><i class="bi bi-check"></i> Повышение качества образования (практикоориентированности, актуальности знаний и т.п)</li>
+              <li><i class="bi bi-check"></i> Повышение востребованности научно-исследовательских разработок, доходов от выполнения НИР</li>
+              <li><i class="bi bi-check"></i> Выявление и поддержка талантов</li>
+              <li><i class="bi bi-check"></i> Повышение уровня квалификации педагогических и научных работников;</li>
+              <li><i class="bi bi-check"></i> Развитие внешних связей, в том числе с другими научными и образовательными организациями региона и других регионов;</li>
+              <li><i class="bi bi-check"></i> Организация мест практик, стажировок</li>
+              <li><i class="bi bi-check"></i> Повышение эффективности трудоустройства выпускников образовательных организаций</li>
+              <li><i class="bi bi-check"></i> Разработка и реализация программ дополнительного образования</li>
+            </ul>
+          </div>
+        </div>
+        
 
-        <div class="row gy-4" data-aos="fade-left">
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box">
-              <h3 style="color: #07d5c0;">Free Plan</h3>
-              <div class="price"><sup>$</sup>0<span> / mo</span></div>
-              <img src="assets/img/pricing-free.png" class="img-fluid" alt="">
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <a href="#" class="btn-buy">Buy Now</a>
-            </div>
+
+
+      </div>
+    </section><!-- End Details Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="gallery" class="pricing">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Галерея заявок органов власти</h2>
+<!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        </div>
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-4 box" data-aos="fade-right">
+            <h3>Обзорные заявки</h3>
+            <h4 style="color: lightgray">50<span>заявок</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> Сформулированы региональными органами власти в обзорном формате</li>
+              <li class="na"><i class="bx bx-x"></i> <span> Не содержат полную информацию в соответствии с методическими рекомендациями НГУЭУ</span></li>
+            </ul>
+            <a href="{% url 'base_galary' %}" class="get-started-btn">Открыть</a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="box">
-              <span class="featured">Featured</span>
-              <h3 style="color: #65c600;">Starter Plan</h3>
-              <div class="price"><sup>$</sup>19<span> / mo</span></div>
-              <img src="assets/img/pricing-starter.png" class="img-fluid" alt="">
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <a href="#" class="btn-buy">Buy Now</a>
-            </div>
+          <div class="col-lg-4 box featured" data-aos="fade-up">
+            <h3>Заявки </h3>
+            <h4 style="color: forestgreen">27<span>заявок</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> Сформулированы региональными органами власти</li>
+              <li><i class="bx bx-check"></i> Прошли трансформацию экспертами биржи</li>
+              <li><i class="bx bx-check"></i> Соответствуют методическим рекомендациям</li>
+            </ul>
+            <a href="{% url 'authority_galary' %}" class="get-started-btn">Открыть</a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-            <div class="box">
-              <h3 style="color: #ff901c;">Business Plan</h3>
-              <div class="price"><sup>$</sup>29<span> / mo</span></div>
-              <img src="assets/img/pricing-business.png" class="img-fluid" alt="">
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <a href="#" class="btn-buy">Buy Now</a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-            <div class="box">
-              <h3 style="color: #ff0071;">Ultimate Plan</h3>
-              <div class="price"><sup>$</sup>49<span> / mo</span></div>
-              <img src="assets/img/pricing-ultimate.png" class="img-fluid" alt="">
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <a href="#" class="btn-buy">Buy Now</a>
-            </div>
+          <div class="col-lg-4 box" data-aos="fade-left">
+            <h3>Предложения НГУЭУ</h3>
+            <h4 style="color: orange">163<span>предложения</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> Сформулированы ППС университета на основе Программы развития Новосибирской области</li>
+            </ul>
+            <a href="{% url 'nsuem_galary' %}" class="get-started-btn">Открыть</a>
           </div>
 
         </div>
 
       </div>
-
     </section><!-- End Pricing Section -->
 
-
-    <section id="team" class="team">
-
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-          <p>Команда проекта</p>
-        </header>
+        <div class="section-title">
+          <h2>О платформе «Интеллектуальная биржа «Третья миссия университета»</h2>
+        </div>
 
-        <div class="row" style="text-align: center">
-          
-        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-          </div>
+        <div class="accordion-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1">Почему «Третья миссия университета»?
+              <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                <p>
+                  «Третья миссия университета» – устойчивый термин, характеризующий взаимодействие вуза и общества в широком смысле. Первой миссией является образование (передача знаний), второй миссией – наука, исследования (генерация знаний).
+                </p>
+                
+                <p>«Интеллектуальная биржа» дает возможность взаимодействия вузов с региональной властью, бизнесом и обществом не только по линии образования и науки, но и в рамках инновационной и предпринимательской деятельности. Именно поэтому платформа как инструмент обеспечения такого взаимодействия получила рабочее название «Третья миссия университета».</p>
+              </div>
+            </li>
 
-          <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <div class="member-img">
-                <img src="{% static 'main/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed">Какие есть требования к формулируемым задачам?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                <p>
+                  Задача должна быть актуальной (отражать реальную проблему Заказчика, не имеющую на текущий момент окончательного решения), конкретной (отражать суть проблемы с необходимой степенью детализации), иметь относительно длительный горизонт решения (не менее 2-3 лет – для включения в образовательный процесс, не менее 1 года – для включения в научно- исследовательский и инновационный процесс организаций-исполнителей) и соответствующий масштаб, позволяющий Исполнителю продолжать исследования в указанной области, в том числе после решения задачи.
+                </p>
               </div>
-              <div class="member-info">
-                <h4>Павел Новгородов</h4>
-                <span>Ректор НГУЭУ, к.э.н., доцент</span>
-                <p>Опыт работы в региональном органе власти (министерство экономического развития Новосибирской области), опыт работы в финансовой сфере, создания и руководство собственного бизнеса (консалтинг, бизнес-планирование).</p>
-              </div>
-            </div>
-          </div>
+            </li>
 
-          <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="member">
-              <div class="member-img">
-                <img src="{% static 'main/img/team/team-4.jpg' %}" class="img-fluid" alt="">
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed">Какая периодичность внесения задач? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                <p>Задачи вносятся (актуализируются) заказчиком не реже одного раза в год. Для включения задач в образовательный процесс целесообразно вносить их не позднее сентября. Для иных целей внесение задач доступно в любое время.
+                </p>
               </div>
-              <div class="member-info">
-                <h4>Александр Гинтофт</h4>
-                <span>Начальник<br>Планово-аналитического отдела</span>
-                <p>Эксперт в ИТ, в т.ч. в области управления на основе данных. Разработчик ИТ-прототипа Интеллектуальной биржи.</p>
-              </div>
-            </div>
-          </div>
+            </li>
 
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed">Рекомендуемое количество задач?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
+                <p>Рекомендуется собрать не менее 2-3 задач с каждого структурного подразделения нижнего уровня (отдела, сектора) органа власти или подведомственного учреждения, за исключением обеспечивающих структурных подразделений (бухгалтерия, отдел кадров, отдел ГО и т.д.). Таким образом, при среднем количестве структурных подразделений нижнего уровня – 10, рекомендуемое количество задач для одного Заказчика – не менее 25.                </p>
+              </div>
+            </li>
+
+          </ul>
         </div>
 
       </div>
+    </section><!-- End Frequently Asked Questions Section -->
 
-    </section>
-
-
-<!--
-     ======= Clients Section ======= 
-    <section id="clients" class="clients">
-
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-          <h2>Our Clients</h2>
-          <p>Temporibus omnis officia</p>
-        </header>
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-          </div>
-          <div class="swiper-pagination"></div>
+        <div class="section-title">
+          <h2>Контактная информация</h2>
+          <p></p>
         </div>
-      </div>
-
-    </section> End Clients Section 
--->
-
-    <!-- ======= Recent Blog Posts Section ======= 
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h2>Blog</h2>
-          <p>Recent posts form our Blog</p>
-        </header>
 
         <div class="row">
 
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-4 info">
+                <i class="bx bx-map"></i>
+                <h4>Адрес</h4>
+                <p>ФГБОУ ВО "НГУЭУ", г. Новосибирск, ул. Каменская, 56</p>
+              </div>
+              <div class="col-lg-4 info">
+                <i class="bx bx-phone"></i>
+                <h4>По вопросам взаимодействия</h4>
+                <p>+7 (913) 482 40 49<br><b>Наталья Ермашкевич</b><br>Руководитель проекта</p>
+              </div>
+              <div class="col-lg-4 info">
+                <i class="bx bx-envelope"></i>
+                <h4>Техническая поддержка</h4>
+                <p>+7 (913) 017 26 28<br><b>Александр Гинтофт</b><br>Начальник планово-<br>аналитического отдела</p>
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Fri, August 28</span>
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
+<!--
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-up">
+              <div class="form-group">
+                <input placeholder="Your Name" type="text" name="name" class="form-control" id="name" required>
+              </div>
+              <div class="form-group mt-3">
+                <input placeholder="Your Email" type="email" class="form-control" name="email" id="email" required>
+              </div>
+              <div class="form-group mt-3">
+                <input placeholder="Subject" type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea placeholder="Message" class="form-control" name="message" rows="5" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
           </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Mon, July 11</span>
-              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
+-->
 
         </div>
 
       </div>
-
-    </section><!-- End Recent Blog Posts Section -->
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="footer-top">
+  <footer id="footer">
+
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <img src="{% static 'main/img/logo.png' %}" alt="">
-              <span>Smart Exchange</span>
-            </a>
-            <p>Биржа проектов и задач для взаимодействия университетов, региональных органов власти и бизнеса.</p>
-            <div class="social-links mt-3">
-              <a href="https://t.me/gintoft" class="linkedin"><i class="bi bi-telegram"></i></a>
-            </div>
-          </div>
 
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Интерфейсы</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Личный кабинет заказчика</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Личный кабинет эксперта</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Личный кабинет исследователя</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="gal/index.html">Галерея запросов</a></li>
-            </ul>
-          </div>
+    </div>
 
-<!--
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Демо-версия</h4>
-            <ul>
-              <li><i class="bi bi-lightning-charge-fill"></i> <a href="/zap/">Регистрация запроса</a></li>
-              <li><i class="bi bi-activity"></i> <a href="#">Оцифровка запроса</a></li>
-              <li><i class="bi bi-boxes"></i> <a href="/gal/">Ресурсы биржи</a></li>
-            </ul>
-          </div>
--->
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Контакты</h4>
-            <p>
-              г. Новосибирск,<br>
-              ул. Каменская, 56<br><br>
-              <strong>Phone:</strong> +7 913 017 2628<br>
-              <strong>Email:</strong> a.s.gintoft@nsuem.ru<br>
-            </p>
-
-          </div>
-
-        </div>
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; ФГБОУ ВО "НГУЭУ", Планово-аналитический отдел
+      </div>
+      <div class="credits">
       </div>
     </div>
-    </div>
-  </footer>
-  
-  <!-- End Footer -->
+  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{% static 'main/vendor/purecounter/purecounter.js' %}"></script>
   <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
   <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'main/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'main/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static 'main/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'main/vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
   <script src="{% static 'main/js/main.js' %}"></script>
+  
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(92624420, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/92624420" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 </body>
 
