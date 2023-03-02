@@ -122,7 +122,7 @@ class Program(models.Model):
     code = models.CharField("Код" ,max_length= 8)
     name = models.CharField("Наименование", max_length=100)
     eduLevel = models.ForeignKey(EduLevel, verbose_name = "Уровень образования", on_delete = models.CASCADE)
-    department = models.ForeignKey(Department, verbose_name = "Ответственное подразделение" ,on_delete = models.CASCADE)
+    department = models.ManyToManyField(Department, verbose_name = "Ответственное подразделение" , related_name = "program_department")
 
     def __str__(self) -> str:
         return self.code + " " + self.name
