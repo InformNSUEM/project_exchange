@@ -1,0 +1,9 @@
+{% autoescape off %}
+Добрый день, {{ user}} ,
+
+Для завершения регистрации на сайте {{ domain }} перейдите по этой ссылке:
+http://{{ domain }}{% url 'account_activate' uidb64=uid token=token %}
+
+С уважением,
+Администрация сайта
+{% endautoescape %}
