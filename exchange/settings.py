@@ -19,7 +19,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', '10.0.100.114', 'birzha.nsuem.ru', '127.0.0.1']
 
-
+SITE_NAME = "127.0.0.1:8000"
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,10 @@ DATABASES = {
     }
 }
 
+TANDEM_HOST = os.environ.get("TANDEM_HOST")
+TANDEM_DB = os.environ.get("TANDEM_DB")
+TANDEM_USERNAME = os.environ.get("TANDEM_USERNAME")
+TANDEM_PASSWORD = os.environ.get("TANDEM_PASSWORD")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -117,14 +122,39 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = '/static/'
 LOGIN_URL = "login"
 LOGIN_REDIRECT = "/"
+LOGIN_REDIRECT_URL = "/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = "users.User"
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "10.0.100.108"
+EMAIL_HOST_USER = "birzha"
+EMAIL_HOST_PASSWORD = "dWYQujuDH3t0plnK"
+EMAIL_POST = 25
+
+
+REDIS_HOST = os.environ.get("HOST")
+REDIS_PORT = "6379"
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout" : 3600}
+CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
+"""
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+"""
