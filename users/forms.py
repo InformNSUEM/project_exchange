@@ -54,7 +54,7 @@ class StudentUserCreationForm(UserCreationForm):
 
     
     booknumber = forms.IntegerField(label = "Номер зачетной книжки",required = True, widget = forms.TextInput(attrs={ 'class': 'form-control'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    #email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     password1 = forms.CharField(
         label='Пароль',
@@ -65,8 +65,8 @@ class StudentUserCreationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields =  ('email', 'booknumber', 'password1', 'password2',) 
-
+        #fields =  ('email', 'booknumber', 'password1', 'password2',) 
+        fields =  ('booknumber', 'password1', 'password2',) 
     def clean(self):
         
         cleaned_data = super().clean()

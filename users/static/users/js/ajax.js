@@ -21,7 +21,7 @@ $('.register-form-student').on('submit', function (event){
     var form = $(this);
     form.find('.is-invalid').removeClass('is-invalid');
     form.find('.invalid-feedback').remove();
-    const email = $('.register-form-student #id_email').val()
+    //const email = $('.register-form-student #id_email').val()
     const password1 = $('.register-form-student #id_password1').val()
     const password2 = $('.register-form-student #id_password2').val()
     const booknumber = $('.register-form-student #id_booknumber').val()
@@ -31,7 +31,7 @@ $('.register-form-student').on('submit', function (event){
     $.ajax({
         type: 'post',
         data: {
-            "email": email,
+            //"email": email,
             "password1": password1,
             "password2": password2,
             "booknumber": booknumber,

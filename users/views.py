@@ -82,6 +82,7 @@ class RegisterStudentView(CreateView):
 
         context = super().get_context_data(**kwargs)
         context['title'] = 'Регистрация исполнителя'
+        context["reg_name"] = "Регистрация исполнителя"
         context["success_message"] = "Письмо с подтверждением аккаунта отправлено вам на почту"
         context["form_url"] = "registerStudent"
         context["form_class"] = "register-form-student"
@@ -95,7 +96,7 @@ class RegisterStudentView(CreateView):
 
         if form.is_valid():
             user = form.save(commit=False)
-            user.email = form.cleaned_data.get('email')
+            #user.email = form.cleaned_data.get('email')
             user.userType = UserType.objects.get(name = "Исполнитель")
 
             try:
@@ -108,6 +109,7 @@ class RegisterStudentView(CreateView):
             if student:
                 user.last_name = student.lastname
                 user.first_name = student.firstname
+                user.email = student.email
                 user.patronymic = student.partonymic
                 user.dateBith = student.datebirth
                 user.userType = UserType.objects.get(name = "Исполнитель")
