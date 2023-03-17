@@ -9,13 +9,11 @@ from django.contrib.auth.tokens import default_token_generator
 from .models import User, UserType, StudentUser, CustomerUser
 from django.shortcuts import render
 
-from django.views.generic.base import TemplateView
 
 from .tandem import StudentData
 from django.http import JsonResponse
 from main import models as mainmodels
 from .tasks import send_authorize_email
-from .mail import send_email
 from django.forms.models import model_to_dict
 
 class RegisterCustomerView(CreateView):

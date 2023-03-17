@@ -83,7 +83,7 @@ class StudentUserCreationForm(UserCreationForm):
     
 class AuthCustomForm(AuthenticationForm):
 
-    username  = forms.CharField( label="Имя пользователя или пароль",max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    username  = forms.CharField( label="E-mail",max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(
         label='Пароль',
         widget=BootstrapPasswordInput(attrs={'class': 'form-control', 'placeholder': 'Введите пароль'}))
