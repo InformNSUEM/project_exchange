@@ -41,7 +41,7 @@ $('.login-form').on('submit', function (event){
             } else {
 
                 if (data['error']) {
-                    $('#login-form__error').show().text(data['error']);
+                    $('#login-form__error').show().html(data['error']);
                 }
             }
         }
