@@ -60,7 +60,7 @@ class MainView(TemplateView):
 
         if user:
                 if user.is_active == False:
-                    self.data.update({"success": False, "error": "Пользователь не подтвержден"})
+                    self.data.update({"success": False, "error": "Пользователь не активирован!<br>Пожалуйста перейдите по ссылке, отправленной вам на почту при прохождении регистрации"})
                     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
                         return JsonResponse(self.data)
                 else:
@@ -70,7 +70,7 @@ class MainView(TemplateView):
                         print(self.data)
                         return JsonResponse(self.data)
         else:
-            self.data.update({"success": False, "error": "Email или пароль не верный"})
+            self.data.update({"success": False, "error": "Указанный Email или пароль не верны<br>Пожалуйста проверьте ваши данные и попробуйте снова"})
             if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
                     return JsonResponse(self.data)
             
