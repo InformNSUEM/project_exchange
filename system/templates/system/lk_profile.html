@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="card">
+    <div class="card-header">
+      <h5  class="card-title mb-0">{{title}}</h5>
+    </div>
+    <div class="card-body">
+      <div class="card-text">
+        <p style = "font-size: 1.3rem;"><strong>Фамилия:</strong> {{user.last_name}}</p>
+        <p style = "font-size: 1.3rem;"> <strong>Имя:</strong> {{user.first_name}}</p>
+        <p style = "font-size: 1.3rem;"><strong> Отчество:</strong> {{user.patronymic}}</p>
+        <p style = "font-size: 1.3rem;"><strong> E-mail:</strong> {{user.email}}</p>
+        <p style = "font-size: 1.3rem;"><strong>Министерство:</strong> {{profile.customer.name}}</p>
+        <p style = "font-size: 1.3rem;"><strong>Должность:</strong> {{profile.post}}</p>
+      </div>
+    </div>
+  </div>
+
+

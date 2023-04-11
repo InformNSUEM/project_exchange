@@ -1,0 +1,42 @@
+{% load static %}
+
+<div class="card">
+    <div class="card-header">
+        <h5  class="card-title mb-0">{{title}}</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Форма отправки заявки</h2>
+        <div class="register-success alert alert-success" role="alert" style="display: none;">
+            Ваша заявка успешно зарегистрирована!<br>Данные о заявке отправлены вам на почту
+        </div>
+
+
+      <form class = "customer_request" data-url="{% url 'system:profile' %}" id="registration-form" method="post">
+
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group" style="margin-top: 10px;">
+      {{ field.label_tag }}
+      {% if  field.field.required %}<span class="required" style = "color: red; font-size: 1em; margin-left: 5px;">*</span>{% endif %}
+      {{ field }}
+      
+    </div>
+    {% endfor %}
+
+    <br>
+    <div class = "text-center">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        </div>
+   
+</form>
+
+
+</div>
+</div>
+</div>
+</div>
+
+    
+

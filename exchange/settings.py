@@ -17,9 +17,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '10.0.100.114', 'birzha.nsuem.ru', '127.0.0.1']
 
-
+SITE_NAME = "birzha.nsuem.ru"
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,6 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'main',
+    'users',
+    'system'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +79,10 @@ DATABASES = {
     }
 }
 
+TANDEM_HOST = os.environ.get("TANDEM_HOST")
+TANDEM_DB = os.environ.get("TANDEM_DB")
+TANDEM_USERNAME = os.environ.get("TANDEM_USERNAME")
+TANDEM_PASSWORD = os.environ.get("TANDEM_PASSWORD")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -94,6 +102,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -113,11 +126,44 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/static/'
 LOGIN_URL = "login"
 LOGIN_REDIRECT = "/"
+LOGIN_REDIRECT_URL = "/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "users.User"
+AUTHENTICATION_BACKENDS = [
+   # 'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_HOST_USER = "birzha"
+EMAIL_HOST_PASSWORD = "dWYQujuDH3t0plnK"
+EMAIL_POST = 25
+
+
+REDIS_HOST = os.environ.get("HOST")
+REDIS_PORT = "6379"
+#CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout" : 3600}
+#CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+CELERY_RESULT_BACKEND = f"redis://redis:6379"
+
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% include "main/pages_parts/head.html" %}
+
+<body>
+    {% include "main/pages_parts/headers/header_system.html" %}
+    <br>
+    <br>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- Боковое меню -->
+            <div class="list-group">
+ 
+              <a href="#personal" class="list-group-item list-group-item-action active" aria-current="true">Личная информация</a>
+              <a href="#my_requests" class="list-group-item list-group-item-action">Мои заявки</a>
+              <a href="#post_request" class="list-group-item list-group-item-action">Подать заявку</a>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- Контент справа -->
+            <div class="card">
+              <div class="card-header">
+                <h5  class="card-title mb-0">{{title}}</h5>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <p style = "font-size: 1.3rem;"><strong>Фамилия:</strong> {{user.last_name}}</p>
+                  <p style = "font-size: 1.3rem;"> <strong>Имя:</strong> {{user.first_name}}</p>
+                  <p style = "font-size: 1.3rem;"><strong> Отчество:</strong> {{user.patronymic}}</p>
+                  <p style = "font-size: 1.3rem;"><strong> E-mail:</strong> {{user.email}}</p>
+                  <p style = "font-size: 1.3rem;"><strong>Министерство:</strong> {{profile.customer.name}}</p>
+                  <p style = "font-size: 1.3rem;"><strong>Должность:</strong> {{profile.post}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Подключаем скрипты Bootstrap -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script class = "post_request" src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    
+      <script class = "get" id = "get" src="{% static 'system/js/ajax.js' %}"></script>
+      <script class = "post"  src="{% static 'system/js/ajax_post.js' %}"></script>
+      <script class = "requests"  src="{% static 'system/js/ajax_requests.js' %}"></script>
+
+    
+    
+        </body>
+</html>

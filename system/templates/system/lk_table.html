@@ -1,0 +1,42 @@
+{% load static %}
+
+<div class="card-header">
+    <h5  class="card-title mb-0">{{title}}</h5>
+  </div>
+  <div class="card-body">
+    <div class="card-text">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class = "text-center">№ заявки</th>
+                        <th class = "text-center">Дата подачи</th>
+                        <th class = "text-center">Формулировка</th>
+                        <th class = "text-center">Статус</th>
+                       
+                      
+                    </tr>
+                </thead>
+                <tbody>
+    
+               
+                {% for request in requests %}
+                <tr>
+                 
+                    <td class = "text-center requests_body"><a href = "{% url 'system:request_detail' pk=request.pk %}"> {{request.pk}}</a></td>
+                    <td class = "text-center">{{request.created_at}}</td>
+                    <td class = "text-center">{{request.task_formulation}}</td>
+                    <td class = "text-center"><b>На проверке</b></td>
+             
+             
+                </tr>
+                {% endfor %}
+    
+            
+    
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+

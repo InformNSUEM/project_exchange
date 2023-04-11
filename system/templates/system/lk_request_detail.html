@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="card">
+    <div class="card-header">
+      <h5  class="card-title mb-0">{{title}}</h5>
+    </div>
+    <div class="card-body">
+      <div class="card-text">
+        <p style = "font-size: 1.3rem;"> <strong>Дата заявки:</strong> {{request.created_at}}</p>
+        <p style = "font-size: 1.3rem;"> <strong>Целеполагание:</strong> {{ request.purpose.all|join:", " }} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Формулировка задачи:</strong> {{request.task_formulation}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Постановка задачи:</strong> {{request.problem_formulation}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Актуальность и источники информации:</strong> {{request.relevance}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Глубина проработки задачи:</strong> {{ request.depthTask.all|join:", " }} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Сроки завершения работы над задачей:</strong> {{request.completion_dates}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Цель будущего исследования:</strong> {{request.research_purpose}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Задачи исследования:</strong> {{request.research_objectives}} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Ключевые слова:</strong> {{ request.key_words.all|join:", " }} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Направления, специальности:</strong> {{ request.program.all|join:", " }} </p>
+        <p style = "font-size: 1.3rem;"> <strong>Ожидаемый результат:</strong> {{request.wish_result}} </p>
+        
+
+
+      </div>
+    </div>
+  </div>
+
