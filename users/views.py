@@ -2,11 +2,12 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomerUserCreationForm, StudentUserCreationForm, AuthCustomForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import Group
 
 from django.utils.encoding import force_str
 from django.utils.http import  urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
-from .models import User, UserType, StudentUser, CustomerUser
+from .models import User, StudentUser, CustomerUser
 from django.shortcuts import render
 
 
@@ -43,10 +44,12 @@ class RegisterCustomerView(CreateView):
         form = self.get_form(form_class)
 
         if form.is_valid():
+
             user = form.save(commit=False)
+            user.is_active = False
             user.email = form.cleaned_data.get('email')
-            user.userType = UserType.objects.get(name = "Заказчик")
             user.save()
+            user.groups.add(Group.objects.get(name = "Заказчик")) 
 
             profile = CustomerUser.objects.create(user=user)
             profile.customer = form.cleaned_data.get('customer')
@@ -94,9 +97,7 @@ class RegisterStudentView(CreateView):
 
         if form.is_valid():
             user = form.save(commit=False)
-            #user.email = form.cleaned_data.get('email')
-            user.userType = UserType.objects.get(name = "Исполнитель")
-
+        
             try:
                 student = StudentData().get(form.cleaned_data.get('booknumber'))
             except:
@@ -109,10 +110,9 @@ class RegisterStudentView(CreateView):
                 user.first_name = student.firstname
                 user.email = student.email
                 user.patronymic = student.partonymic
-                user.dateBith = student.datebirth
-                user.userType = UserType.objects.get(name = "Исполнитель")
                 user.is_active = False
                 user.save()
+                user.groups.add(Group.objects.get(name = "Исполнитель")) 
             else:
                 if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
                     self.data.update({"success": False, "error": "Студент с данным номером зачетки не найден"})
@@ -120,6 +120,7 @@ class RegisterStudentView(CreateView):
             
             profile = StudentUser.objects.create(user=user)
             profile.booknumber = form.cleaned_data.get('booknumber')
+            profile.dateBith = student.datebirth
             profile.group = mainmodels.Group.objects.get(name = student.group)
             profile.save()
            

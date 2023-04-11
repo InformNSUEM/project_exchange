@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 from django.utils.text import slugify
 from transliterate import translit
-
+from users.user_models import User
 #Справочники заказчика
 
 #Тип заказчика
@@ -279,28 +279,28 @@ class ApplicationAuthority(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    customer = models.ForeignKey(Customer, verbose_name = "Заказчик", on_delete = models.CASCADE)
-    department_authority = models.CharField("Структурное подразделение", max_length = 150)
-    authority_fio = models.CharField("ФИО заказчика", max_length = 150)
-    authority_post = models.CharField("Должность ответственного от заказчика", max_length = 150)
-    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Номер телефона должен быть введен в формате: '+799999999'. Разрешено вводить до 15 символов.")
-    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True, verbose_name = "Телефон ответственного от заказчика")
-    mail = models.EmailField("Электронная почта ответственного от заказчика") 
-    goal = models.ManyToManyField(CustomerGoal, verbose_name = "Целеполагание заказчика", related_name = 'applicationAuthority_customerGoal')
+    customer = models.ForeignKey(User, verbose_name = "Заказчик", on_delete = models.CASCADE)#limit_choices_to={"userType__name": "Заказчик"})
+    #department_authority = models.CharField("Структурное подразделение", max_length = 150)
+    #authority_fio = models.CharField("ФИО заказчика", max_length = 150)
+    #authority_post = models.CharField("Должность ответственного от заказчика", max_length = 150)
+    #phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Номер телефона должен быть введен в формате: '+799999999'. Разрешено вводить до 15 символов.")
+    #phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True, verbose_name = "Телефон ответственного от заказчика")
+    #mail = models.EmailField("Электронная почта ответственного от заказчика") 
+    purpose = models.ManyToManyField(CustomerGoal, verbose_name = "Целеполагание заказчика", related_name = 'applicationAuthority_customerGoal')
     task_formulation = models.TextField("Формулировка задачи")
     problem_formulation = models.TextField("Постановка задачи")
     relevance = models.TextField("Актуальность и источники информации")
     depthTask = models.ManyToManyField(DepthTask, verbose_name = "Глубина проработки задачи", related_name = "applicationAuthority_depthTash")
-    completion_dates = models.CharField("Сроки завершения работы над задачей", max_length = 20)
+    completion_dates = models.DateField("Сроки завершения работы над задачей")
     research_purpose = models.CharField("Цель будущего исследования", max_length = 255)
     research_objectives = models.TextField("Задачи исследования")
     key_words = models.ManyToManyField(KeyWords, verbose_name = "Ключевые слова", related_name = "applicationAuthority_keyWords")
-    program = models.CharField("Направления, специальности", max_length = 150)
+    program = models.ManyToManyField(Program, verbose_name = "Направления, специальности", related_name = "applicationAuthority_program")
     wish_result = models.CharField("Ожидаемый результат", max_length = 150)
     other_info = models.TextField("Прочая информация", blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.customer.name
+        return self.customer.get_full_name()
 
     class Meta:
 

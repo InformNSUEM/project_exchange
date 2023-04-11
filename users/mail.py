@@ -10,11 +10,9 @@ def send_email(user):
     
     if 'model_state' in user:
         del user['model_state']
-    print("ПК равен",user["id"])
-    print(user)
+
     user = User.objects.get(pk = user["id"])
     
-   
     current_site = settings.SITE_NAME
     email_subject = 'Активируйте ваш аккаунт'
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, UserType, StudentUser, CustomerUser
+from .models import User, StudentUser, CustomerUser
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -19,19 +19,15 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2')
         }),
         ('Персональная информация', {
-            'fields': ('last_name', 'first_name', 'patronymic', 'dateBith')
+            'fields': ('last_name', 'first_name', 'patronymic')
         }),
-        ('Служебная информация', {
-            'fields': ('userType',)
-        })
-    
     )
     fieldsets = (
         (None, {
             'fields': ('email', 'password')
         }),
         ('Персональная информация', {
-            'fields': ('last_name', 'first_name', 'patronymic', 'dateBith')
+            'fields': ('last_name', 'first_name', 'patronymic',)
         }),
         ('Права', {
             'fields': (
@@ -42,9 +38,7 @@ class CustomUserAdmin(UserAdmin):
         ('Системные даты', {
             'fields': ('last_login', 'date_joined')
         }),
-        ('Служебная информация', {
-            'fields': ('userType',)
-        })
+        
 
     
     )
@@ -52,10 +46,7 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(User, CustomUserAdmin)
 
-@admin.register(UserType)
-class UserTypeAdmin(admin.ModelAdmin):
 
-    list_display = ("name",)
 
 @admin.register(StudentUser)
 class StudentTypeAdmin(admin.ModelAdmin):

@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'main',
-    'users'
+    'users',
+    'system'
 ]
 
 MIDDLEWARE = [
@@ -143,7 +144,7 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
-EMAIL_HOST = "10.0.100.108"
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_HOST_USER = "birzha"
 EMAIL_HOST_PASSWORD = "dWYQujuDH3t0plnK"
 EMAIL_POST = 25
@@ -161,9 +162,8 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 
-"""
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-"""

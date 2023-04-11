@@ -1,6 +1,5 @@
 function getCookie(name) {
     let cookieValue = null;
-    console.log("12345")
     if (document.cookie && document.cookie !== '') {
       const cookies = document.cookie.split(';');
       for (let i = 0; i < cookies.length; i++) {
@@ -21,7 +20,6 @@ $('.register-form-student').on('submit', function (event){
     var form = $(this);
     form.find('.is-invalid').removeClass('is-invalid');
     form.find('.invalid-feedback').remove();
-    //const email = $('.register-form-student #id_email').val()
     const password1 = $('.register-form-student #id_password1').val()
     const password2 = $('.register-form-student #id_password2').val()
     const booknumber = $('.register-form-student #id_booknumber').val()
@@ -31,7 +29,7 @@ $('.register-form-student').on('submit', function (event){
     $.ajax({
         type: 'post',
         data: {
-            //"email": email,
+        
             "password1": password1,
             "password2": password2,
             "booknumber": booknumber,
@@ -72,7 +70,6 @@ $(document).ready(function() {
         const first_name = $('.register-form-customer #id_first_name').val()
         const patronymic = $('.register-form-customer #id_patronymic').val()
         const email = $('.register-form-customer #id_email').val()
-        const dateBith = $('.register-form-customer #id_dateBith').val()
         const customer = $('.register-form-customer #id_customer').val()
         const post = $('.register-form-customer #id_post').val()
         const password1 = $('.register-form-customer #id_password1').val()
@@ -87,7 +84,6 @@ $(document).ready(function() {
                 "first_name": first_name,
                 "patronymic": patronymic,
                 "email": email,
-                "dateBith": dateBith,
                 "customer": customer,
                 "post": post,
                 "password1": password1,

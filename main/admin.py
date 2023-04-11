@@ -81,7 +81,7 @@ class InternalApplicationAdmin(admin.ModelAdmin):
 @admin.register(ApplicationAuthority)
 class ApplicationAuthorityAdmin(admin.ModelAdmin):
 
-    list_display = ("customer",  "department_authority", "authority_fio", "authority_post", "phone_number", "mail", "task_formulation", "problem_formulation", "relevance", "completion_dates", "research_purpose", "research_objectives", "program", "wish_result", "other_info")
+    list_display = ("customer", "task_formulation", "problem_formulation", "relevance", "completion_dates", "research_purpose", "research_objectives", "wish_result", "other_info")
 
 
 @admin.register(PackageRequestProcessing)

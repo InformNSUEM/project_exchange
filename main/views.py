@@ -5,14 +5,13 @@ from users.forms import AuthCustomForm
 from users.models import User
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
+from .forms import ApplicationAuthorityForm
+from django.views.generic.edit import CreateView
+
+from .tasks import send_request_mail
 
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
-from rest_framework.permissions import AllowAny
+
 class MainView(TemplateView):
 
     template_name = "main/index.html"
@@ -79,20 +78,6 @@ class MainView(TemplateView):
         return super().post(request, *args, **kwargs)
 
 
-
-class MyAPIView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request, *args, **kwargs):
-        
-        print(request)
-        data = JSONParser().parse(request)
-        print(data)
-        # здесь обрабатываем POST запрос
-        return Response({'message': 'Success!'}, status=status.HTTP_200_OK)
-    
-
-
 class GalaryNsuemView(TemplateView):
 
     template_name = "main/nsuem_gal.html"
@@ -103,4 +88,4 @@ class BaseOrderView(TemplateView):
 
 class AuthorityOrderView(TemplateView):
 
-    template_name = "main/orders_gal.html"
+    template_name = "main/lk.html"
