@@ -88,4 +88,4 @@ class BaseOrderView(TemplateView):
 
 class AuthorityOrderView(TemplateView):
 
-    template_name = "main/lk.html"
+    template_name = "main/orders_gal.html"
