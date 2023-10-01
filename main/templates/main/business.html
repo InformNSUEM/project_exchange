@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% include "main/pages_parts/head.html" %}
+
+  <style type="text/css">
+    .form-group { 
+      margin-top: 15px;
+    }
+    .step {
+    display: none;
+}
+
+  .step.active {
+      display: block;
+  }
+
+  .btn {
+    width: 150px;
+  }
+  .list-group-item {
+    pointer-events: none;
+  }
+   </style>
+<body>
+    {% include "main/pages_parts/headers/header_system.html" %}
+    <br>
+    <br>
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <!-- Боковое меню -->
+            <div class="list-group">
+ 
+              <a class="list-group-item  active">Шаг 1 - Данные о заказчике</a>
+              <a class="list-group-item" >Шаг 2 - Информация о задаче</a>
+              <a class="list-group-item ">Шаг 3 - Дополнение информации</a>
+              <a class="list-group-item ">Шаг 4 - Прочие сведения</a>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- Контент справа -->
+            <div class="card">
+              <div class="card-header">
+                <h5  class="card-title mb-0">Подача заявки от коммерческого сектора</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 offset-md-3">
+                  <form class = "business_application" data-url="{% url 'business_application' %}" id="business_application" method="post">
+            
+                    {% csrf_token %}
+
+                    <div class="step active">
+                      
+                    <div class="form-group">
+                      <label for="customer">Наименование организации</label>
+                      <input class="form-control" type="text" maxlength="150" id = "customer" name = "customer" required>
+                      <div class="invalid-feedback"></div>
+                      </div>
+
+                    <div class="form-group">
+                      <label for="department">Наименование структурного подразделения</label>
+                      <input class="form-control" type="text" maxlength="150" id = "department" name = "department" required>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fio">ФИО ответственного лица от заказчика</label>
+                      <input class="form-control" type="text"  maxlength="150" id = "fio" name = "fio" required>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fio">Должность ответственного лица от заказчика </label>
+                      <input class="form-control" type="text" maxlength="150" id = "post" name = "post" required>
+                      <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="phone">Телефон ответственного лица от заказчика </label>
+                      <input class="form-control" type="text" maxlength="17" id = "phone" name = "phone_number">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" maxlength="40" aria-describedby="email" name = "email" placeholder="example@mail.ru" required>
+                      <div class="invalid-feedback"></div>
+                    </div>
+                    <br>
+                    <div class = "text-center">
+                    <button type="button" class="btn btn-primary next-step">Далее</button>
+                    </div>
+                </div>
+                <div class="step">
+                 
+
+                   <div class="form-group">
+                        <label for="select2Type" data-bs-toggle="tooltip" data-bs-placement="right" 
+                        title=
+"Базовая потребность - Просвещение
+- Кадры – с целью привлечения на практику, стажировку и трудоустройство обучающихся, продемонстрировавших высокий уровень при решении задачи Заказчика; 
+- Экспертиза и анализ – с целью получения аналитических данных, оценки, формирования выводов, предложений и проектов решений по задаче Заказчика; 
+- Разработка и внедрение – с целью получения Заказчиком конкретных проектов документов, методик, инструментария, решений, прототипов, интеллектуальной собственности, опытно-конструкторских и иных прикладных разработок; 
+- Предпринимательство – с целью инициации бизнес-идей, стартапов и иных предпринимательских проектов в рамках или по итогу решения задачи Заказчика">
+                        Тип потребности заказчика</label>
+                        <select name = "purpose" class="form-control" id="select2Type" multiple required >
+                          {% for goal in goals %}
+                            <option value="{{goal.id}}">{{goal.name}}</option>
+                            {% endfor %}
+                   
+                        </select>
+                        <div class="invalid-feedback">Поле обязательно для заполнения.</div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="task_formulation">Формулировка задачи</label>
+                        <textarea class="form-control" id="task_formulation" name = "task_formulation" rows="3" required></textarea>
+                        <div class="invalid-feedback"></div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="problem_formulation">Постановка задачи</label>
+                        <textarea class="form-control" id="problem_formulation" name = "problem_formulation" rows="3" required></textarea>
+                        <div class="invalid-feedback"></div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="relevance">Актуальность и источники информации</label>
+                        <textarea class="form-control" id="relevance" name = "relevance" rows="3" required></textarea>
+                        <div class="invalid-feedback"></div>
+                      </div>
+                      <br>
+                      <div class = "text-center">
+                        <button type="button" class="btn btn-secondary prev-step">Назад</button>
+                        <button type="button" class="btn btn-primary next-step">Далее</button>
+                      </div>
+                </div>
+
+                <div class="step">
+
+                      <div class="form-group">
+                        <label for="select2Depth">Глубина проработки задачи</label>
+                        <select name = "depthTask" class="form-control" id="select2Depth" multiple required >
+                            {% for depth in depths %}
+                            <option value="{{depth.id}}">{{depth.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">Поле обязательно для заполнения.</div>
+                      </div>
+                
+
+                      <div class="form-group">
+                        <label for="completion_dates">Сроки завершения работы над задачей</label>
+                        <input class="form-control" type="date" id="completion_dates" name="completion_dates" required>
+                        <div class="invalid-feedback"></div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="research_purpose">Этапы решения задачи </label>
+                        <textarea class="form-control" id="research_purpose" name = "research_purpose" rows="3"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="key_words">Ключевые слова</label>
+                        <input class="form-control" type="text" placeholder="Разработка, Внедрение" maxlength="150" id = "key_words" name = "key_words">
+                        </div>
+                        <br>
+                        <div class = "text-center">
+                          <button type="button" class="btn btn-secondary prev-step">Назад</button>
+                          <button type="button" class="btn btn-primary next-step">Далее</button>
+                        </div>
+                    </div>
+
+                    <div class="step">
+
+                        <div class="form-group">
+                          <label for="select2Programs">Направления, специальности</label>
+                          <select name = "program" class="form-control is-invalid" id="select2Programs" multiple  >
+                              {% for program in programs %}
+                              <option value="{{program.id}}">{{program.makeProgram}}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="wish_result">Ожидаемый результат (требования к результату)</label>
+                          <input class="form-control" type="text" maxlength="150" id = "wish_result" name = "wish_result">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="other_info">Прочая информация о задаче</label>
+                            <textarea class="form-control" id="other_info" name = "other_info" rows="3"></textarea>
+                          </div>
+                
+
+
+                      <br>
+                      
+                      <div class = "text-center">
+                        <button type="button" class="btn btn-secondary prev-step">Назад</button>
+                          <button type="submit" class="btn btn-primary">Отправить</button>
+                          </div>
+                    </div>
+                
+                
+                   
+                </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h4 class="modal-title">Информация о заявке</h4>
+                     
+                  </div>
+                  <div class="modal-body">
+                      <p>Заявка успешно отправлена и зарегистрирована! <br> Вашей заявке присвоен номер: <b><span id = "value_buisness"></span></b></p>
+                      <p> Полная информация по заявке была отправлена Вам на почту, указанную при подаче. 
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" id="submitNew">Новая заявка</button>
+                      <button type="button" class="btn btn-secondary" id="submitEnd">Завершить</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <!-- Подключаем скрипты Bootstrap -->
+    
+      {% include "main/pages_parts/vendor_js.html" %}
+
+      <script src="{% static 'main/js/app_business.js' %}"></script>
+        </body>
+</html>

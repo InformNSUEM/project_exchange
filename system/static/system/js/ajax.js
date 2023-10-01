@@ -14,7 +14,7 @@ $(document).ready(function() {
   
       // Отправляем AJAX-запрос на сервер для получения данных для вкладки
       $.ajax({
-        url: 'https://birzha.nsuem.ru/system/profile/' + tabId.slice(1) + '/',
+        url: '/system/profile/' + tabId.slice(1) + '/',
         type: 'GET',
         dataType: 'html',
         success: function(response) {

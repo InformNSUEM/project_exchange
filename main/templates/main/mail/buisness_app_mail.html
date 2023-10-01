@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Информирование о заявке</title>
+</head>
+<body>
+    <table cellpadding="0" cellspacing="0" width="600" style="margin: 0 auto; font-family: Arial, sans-serif;">
+        <tr>
+            <td align="center" style="background-color: #007BFF; padding: 20px;">
+                <img src="https://nsuem.ru/local/assets/images/logo.png" alt="Логотип компании" style="max-width: 150px; display: block;">
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 20px;">
+                <h1>Информация о заявке</h1>
+                <p style="font-weight: bold;">Здравствуйте {{fio}},</p>
+                <p>Мы хотели бы подтвердить получение вашей заявки. Ваши данные успешно зарегистрированы в нашей системе. Ниже приведены детали вашей заявки:</p>
+                <table cellspacing="0" cellpadding="10" width="100%" style="border: 1px solid #ddd; border-collapse: collapse;">
+                    <tr style="background-color: #f2f2f2; border: 1px solid #ddd; ">
+                        <th>Название поля</th>
+                        <th>Значение</th>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="border: 1px solid #ddd;">Наименование организации</td>
+                        <td style="border: 1px solid #ddd;">{{customer}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Наименование структурного подразделения</td>
+                        <td style="border: 1px solid #ddd;">{{department}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">ФИО ответственного лица</td>
+                        <td style="border: 1px solid #ddd;">{{fio}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Должность ответственного лица</td>
+                        <td style="border: 1px solid #ddd;">{{post}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Телефон ответственного лица</td>
+                        <td style="border: 1px solid #ddd;">{{phone_number}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Email</td>
+                        <td style="border: 1px solid #ddd;">{{email}}</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Тип потребности</td>
+                        <td style="border: 1px solid #ddd;">{{purpose}}</td>
+                    </tr>
+                        <td style="border: 1px solid #ddd;">Формулировка задачи</td>
+                        <td style="border: 1px solid #ddd;">{{task_formulation}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Постановка задачи</td>
+                        <td style="border: 1px solid #ddd;">{{problem_formulation}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Актуальность и источники информации</td>
+                        <td>{{relevance}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Глубина проработки задачи</td>
+                        <td style="border: 1px solid #ddd;">{{depthTask}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Сроки завершения работы над задачей</td>
+                        <td style="border: 1px solid #ddd;"> {{completion_dates}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Этапы решения задачи</td>
+                        <td style="border: 1px solid #ddd;">{{research_purpose}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Ключевые слова</td>
+                        <td style="border: 1px solid #ddd;">{{key_words}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Направления, специальности</td>
+                        <td style="border: 1px solid #ddd;">{{program}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Ожидаемый результат</td>
+                        <td style="border: 1px solid #ddd;">{{wish_result}}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd;">Прочая информация</td>
+                        <td style="border: 1px solid #ddd;">{{other_info}}</td>
+                    </tr>
+                    <!-- Добавьте другие поля и значения заявки по вашим требованиям -->
+                </table>
+                <p>Если у вас возникнут какие-либо вопросы или вам нужна дополнительная информация, не стесняйтесь связаться с нами по адресу [Контактный email] или по телефону [Контактный телефон].</p>
+                <p>Спасибо за вашу заявку. Мы свяжемся с вами в ближайшее время.</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="background-color: #007BFF; padding: 20px; color: #fff;">
+                &copy; 2023 Интеллектуальная биржа. Все права защищены.
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

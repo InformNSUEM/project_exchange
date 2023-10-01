@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import University, Department, Group, Disciplines, KeyWords, DepthTask, DepthTaskState, EduLevel, FormatResult, CustomerGoal, PackageRequest, InternalApplication, ApplicationAuthority, PackageRequestProcessing, InternalApplicationProcessing, ApplicationAuthorityProcessing, CustomerType, Customer, Program
+from .models import University, Department, Group, Disciplines, KeyWords, DepthTask, DepthTaskState, EduLevel, FormatResult, CustomerGoal, PackageRequest, InternalApplication, ApplicationAuthority, PackageRequestProcessing, InternalApplicationProcessing, ApplicationAuthorityProcessing, CustomerType, Customer, Program, ApplicationBuisness
 
 # Register your models here.
 @admin.register(University)
@@ -98,3 +98,8 @@ class InternalApplicationProcessingAdmin(admin.ModelAdmin):
 class ApplicationAuthorityProcessingAdmin(admin.ModelAdmin):
 
     list_display = ("application", "theme",  "completion_dates", "research_purpose", "comment")
+
+
+@admin.register(ApplicationBuisness)
+class ApplicationBuisnessAdmin(admin.ModelAdmin):
+    pass
