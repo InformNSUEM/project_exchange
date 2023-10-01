@@ -148,6 +148,7 @@ class Business_App(View):
                 form_data_instance.depthTask.add(*self.postData.get("depthTask"))
                 form_data_instance.program.add(*self.postData.get("program")) 
                 self.data.update({"id":form_data_instance.id})
+                self.postData.update({"id":form_data_instance.id})
                 
 
                 send_buisness_request_mail.delay(self.postData) 
