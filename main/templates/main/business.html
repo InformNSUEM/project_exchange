@@ -21,6 +21,23 @@
   .list-group-item {
     pointer-events: none;
   }
+  .tooltip-inner {
+  max-width: 600px; 
+  text-align: left; 
+  white-space: pre-wrap;
+  background-color: rgb(221, 221, 221);
+  color: black;
+}
+
+.info-icon {
+  color: #53a2f7;
+  transition: color 0.2s;
+}
+
+
+.info-icon:hover {
+  color: #0056b3; 
+}
    </style>
 <body>
     {% include "main/pages_parts/headers/header_system.html" %}
@@ -97,14 +114,14 @@
                  
 
                    <div class="form-group">
-                        <label for="select2Type" data-bs-toggle="tooltip" data-bs-placement="right" 
-                        title=
-"Базовая потребность - Просвещение
-- Кадры – с целью привлечения на практику, стажировку и трудоустройство обучающихся, продемонстрировавших высокий уровень при решении задачи Заказчика; 
-- Экспертиза и анализ – с целью получения аналитических данных, оценки, формирования выводов, предложений и проектов решений по задаче Заказчика; 
-- Разработка и внедрение – с целью получения Заказчиком конкретных проектов документов, методик, инструментария, решений, прототипов, интеллектуальной собственности, опытно-конструкторских и иных прикладных разработок; 
-- Предпринимательство – с целью инициации бизнес-идей, стартапов и иных предпринимательских проектов в рамках или по итогу решения задачи Заказчика">
-                        Тип потребности заказчика</label>
+                        <label for="select2Type">Тип потребности заказчика <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"<b>Базовая потребность</b> - Просвещение, т.е. обозначение актуальной тематики Заказчика для научных и образовательных организаций, повышения практикоориентированности образования и эффективности прикладных исследований. 
+Вы можете выбрать дополнительные потребности из списка. 
+<b>Кадры</b> – с целью привлечения на практику, стажировку и трудоустройство обучающихся, продемонстрировавших высокий уровень при решении задачи Заказчика; 
+<b>Экспертиза и анализ</b>  – с целью получения аналитических данных, оценки, формирования выводов, предложений и проектов решений по задаче Заказчика; 
+<b>Разработка и внедрение</b> – с целью получения Заказчиком конкретных проектов документов, методик, инструментария, решений, прототипов, интеллектуальной собственности, опытно-конструкторских и иных прикладных разработок; 
+<b>Предпринимательство</b> – с целью инициации бизнес-идей, стартапов и иных предпринимательских проектов в рамках или по итогу решения задачи Заказчика"></i></label>
                         <select name = "purpose" class="form-control" id="select2Type" multiple required >
                           {% for goal in goals %}
                             <option value="{{goal.id}}">{{goal.name}}</option>
@@ -115,19 +132,31 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="task_formulation">Формулировка задачи</label>
+                        <label for="task_formulation">Формулировка задачи <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"<b>Краткая формулировка задачи (предлагаемая тема)</b> - является заголовком - вводной фразой, призванной привлечь внимание Исполнителя для выбора задачи на платформе"></i> </label>
                         <textarea class="form-control" id="task_formulation" name = "task_formulation" rows="3" required></textarea>
                         <div class="invalid-feedback"></div>
                       </div>
 
                       <div class="form-group">
-                        <label for="problem_formulation">Постановка задачи</label>
+                        <label for="problem_formulation">Постановка задачи <i class="fas fa-info-circle info-icon" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"Детальное описание (аннотация) задачи <b>Заказчика</b>, отвечающее на вопросы: 
+- в чем заключается проблема Заказчика (суть, содержание), как и в чем она проявляется (результаты, эффекты, показатели и т.п.); 
+- какого уровня описываемая проблема (географический, пространственный и иной масштаб); 
+- кто заинтересован в решении проблемы (какие группы пользователей, целевая аудитория – физические или юридические лица, отрасль и т.д.); 
+- какие у указанной проблемы целевые установки и ограничения (например, нормативные, финансовые и т.д.); 
+- каким образом проблема решается сейчас и какие имеются подходы по ее решению; 
+- какие полезные эффекты, результаты должны возникнуть при решении проблемы."></i></label>
                         <textarea class="form-control" id="problem_formulation" name = "problem_formulation" rows="3" required></textarea>
                         <div class="invalid-feedback"></div>
                       </div>
 
                       <div class="form-group">
-                        <label for="relevance">Актуальность и источники информации</label>
+                        <label for="relevance">Актуальность и источники информации <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"Информация, подтверждающая актуальность задачи, например: - национальные проекты, государственные программы, указы и постановления, иные нормативные документы; - аналитические исследования, выводы, рекомендации; - материалы СМИ, интервью и т.д. Какие источники, помимо указанных выше, рекомендуется использовать Исполнителю при выполнении задачи (сборники статистических данных, обзоры, исследования, публикации и т.п.)"></i></label>
                         <textarea class="form-control" id="relevance" name = "relevance" rows="3" required></textarea>
                         <div class="invalid-feedback"></div>
                       </div>
@@ -141,7 +170,14 @@
                 <div class="step">
 
                       <div class="form-group">
-                        <label for="select2Depth">Глубина проработки задачи</label>
+                        <label for="select2Depth">Глубина проработки задачи <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"Отразите глубину проработки решения, объем предполагаемых работ по предложенной задаче, определяемым целеполаганием <b>Заказчика</b>, уровнем <b>Исполнителя</b>: 
+- рефераты, курсовые работы (работы обучающихся в рамках просветительской и кадровой целей Заказчика); 
+- выпускные квалификационные работы, магистерские диссертации (работы, потенциально имеющие полезность для Заказчика с позиции конкретного результата); 
+- кандидатские и докторские диссертации, НИР; 
+- технические и иные разработки, создание прототипов, интеллектуальной собственности; 
+- предпринимательские проекты."></i></label>
                         <select name = "depthTask" class="form-control" id="select2Depth" multiple required >
                             {% for depth in depths %}
                             <option value="{{depth.id}}">{{depth.name}}</option>
@@ -152,18 +188,24 @@
                 
 
                       <div class="form-group">
-                        <label for="completion_dates">Сроки завершения работы над задачей</label>
+                        <label for="completion_dates">Сроки завершения работы над задачей <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"Укажите временной диапазон, в течение которого поставленная задача будет актуальна для Заказчика. Указывается временной диапазон в годах или конкретная дата."></i></label>
                         <input class="form-control" type="date" id="completion_dates" name="completion_dates" required>
                         <div class="invalid-feedback"></div>
                       </div>
 
                       <div class="form-group">
-                        <label for="research_purpose">Этапы решения задачи </label>
+                        <label for="research_purpose">Этапы решения задачи <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"В соответствии с поставленной целью могут выделяться этапы, которые необходимы для решения задачи. Этапы являются содержательной детализацией (декомпозицией) задачи. В качестве примера таких этапов: проведение анализа, обобщение результатов, выявление закономерностей, обоснования необходимости внедрения, разработка прототипа, оценка отдельных аспектов проблемы,. При этом важно однотипное изложение этапов: «выявить», «обобщить», «систематизировать», «разработать», «обосновать» и т.д."></i></label>
                         <textarea class="form-control" id="research_purpose" name = "research_purpose" rows="3"></textarea>
                       </div>
 
                       <div class="form-group">
-                        <label for="key_words">Ключевые слова</label>
+                        <label for="key_words">Ключевые слова <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                          title=
+"<b>Ключевые слова</b> - это набор слов, их сочетаний и фраз (главные термины), которые позволяют выразить основное содержание задачи. Используются для поиска на платформе, а также систематизации и структуризации разного типа задач. Слова или фразы указываются через запятую."></i></label>
                         <input class="form-control" type="text" placeholder="Разработка, Внедрение" maxlength="150" id = "key_words" name = "key_words">
                         </div>
                         <br>
@@ -176,21 +218,27 @@
                     <div class="step">
 
                         <div class="form-group">
-                          <label for="select2Programs">Направления, специальности</label>
+                          <label for="select2Programs">Направления, специальности <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                            title=
+  "Укажите укрупненные группы направлений (специальностей), которым релевантна поставленная задача"></i></label>
                           <select name = "program" class="form-control is-invalid" id="select2Programs" multiple  >
                               {% for program in programs %}
-                              <option value="{{program.id}}">{{program.makeProgram}}</option>
+                              <option value="{{program.id}}">{{program.name}} ({{program.eduLevel.name}})</option>
                               {% endfor %}
                           </select>
                         </div>
 
                         <div class="form-group">
-                          <label for="wish_result">Ожидаемый результат (требования к результату)</label>
+                          <label for="wish_result">Ожидаемый результат (требования к результату) <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" 
+                            title=
+  "Укажите, что должно стать результатом работы над задачей, какие элементы должны быть обязательными для того, чтобы задача могла быть считаться решённой."></i></label>
                           <input class="form-control" type="text" maxlength="150" id = "wish_result" name = "wish_result">
                           </div>
 
                           <div class="form-group">
-                            <label for="other_info">Прочая информация о задаче</label>
+                            <label for="other_info">Прочая информация о задаче <i class="fas fa-info-circle info-icon"  data-bs-toggle="tooltip"data-bs-html="true" data-bs-placement="right" 
+                              title=
+    "Свободное поле для уточнения задачи, комментариев и предложений"></i></label>
                             <textarea class="form-control" id="other_info" name = "other_info" rows="3"></textarea>
                           </div>
                 
@@ -200,7 +248,7 @@
                       
                       <div class = "text-center">
                         <button type="button" class="btn btn-secondary prev-step">Назад</button>
-                          <button type="submit" class="btn btn-primary">Отправить</button>
+                          <button type="submit" class="btn btn-primary" id = "submitButton">Отправить</button>
                           </div>
                     </div>
                 
