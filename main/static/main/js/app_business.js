@@ -11,6 +11,8 @@ $(document).ready(function () {
     var list_item = list_group.find(".list-group-item");
     var currentStep = 0;
 
+    $('[data-bs-toggle="tooltip"]').tooltip();
+
     function goToStep(step) {
       
         steps.removeClass("active").eq(step).addClass("active");
@@ -39,7 +41,7 @@ $(document).ready(function () {
 
         var currentStepFields = steps.eq(currentStep).find("*[required]");
         var some = $("#select2Type").val();
-        console.log(some)
+      
         var isValid = true;
 
         currentStepFields.each(function () {
@@ -66,7 +68,7 @@ $(document).ready(function () {
                 emailField.next(".invalid-feedback").text("");
             }
         }
-        console.log(isValid)
+       
 
     if (isValid) {
         if (currentStep < steps.length - 1) {
@@ -85,6 +87,8 @@ $(document).ready(function () {
     $('.business_application').on('submit', function(event) {
         event.preventDefault();
         var form = $(this);
+        var submitButton = document.getElementById("submitButton");
+        submitButton.disabled = true;
         const url = $(".business_application").attr("data-url");
        
 
@@ -97,7 +101,7 @@ $(document).ready(function () {
             
             
             success: function (data){
-                console.log("Success")
+               
                 $("#myModal").modal("show");
                 $("#value_buisness").text(data.id)
              
