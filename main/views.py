@@ -100,7 +100,7 @@ class Business_App(View):
         
         goals = CustomerGoal.objects.all().order_by("id")
         depths = DepthTask.objects.all().order_by("name")
-        programs = Program.objects.all().order_by("code")
+        programs = Program.objects.select_related("eduLevel").all().order_by("name")
         context = {}
 
         context['goals'] = goals
