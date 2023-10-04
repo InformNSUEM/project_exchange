@@ -138,6 +138,12 @@ class Program(models.Model):
 
         return program
     
+    def makeProgramForBusiness(self):
+
+        program = f"{self.name} ({self.code})"
+
+        return program
+    
 #Учебная группа
 class Group(models.Model):
 
