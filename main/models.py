@@ -132,9 +132,15 @@ class Program(models.Model):
         verbose_name = "Направление подготовки"
         verbose_name_plural = "Направления подготовки"
 
-    def makeProfram(self):
+    def makeProgram(self):
 
         program = self.code + " " + self.name
+
+        return program
+    
+    def makeProgramForBusiness(self):
+
+        program = f"{self.name} ({self.code})"
 
         return program
     
@@ -174,7 +180,7 @@ class KeyWords(models.Model):
 #Глубина проработки задачи
 class DepthTask(models.Model):
 
-    name = models.CharField("Наименование", max_length = 50)
+    name = models.CharField("Наименование", max_length = 150)
 
     def __str__(self) -> str:
         return self.name
@@ -214,7 +220,7 @@ class FormatResult(models.Model):
 
 class CustomerGoal(models.Model):
 
-    name = models.CharField("Наименование", max_length = 50) 
+    name = models.CharField("Наименование", max_length = 150) 
 
     def __str__(self) -> str:
         return self.name
@@ -306,6 +312,38 @@ class ApplicationAuthority(models.Model):
 
         verbose_name = "Заявки органов власти"
         verbose_name_plural = "Заявки органов власти"
+
+    
+class ApplicationBuisness(models.Model):
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    customer = models.CharField(verbose_name = "Заказчик",  max_length = 150 )#limit_choices_to={"userType__name": "Заказчик"})
+    department = models.CharField("Структурное подразделение", max_length = 150)
+    fio = models.CharField("ФИО заказчика", max_length = 150)
+    post = models.CharField("Должность ответственного от заказчика", max_length = 150)
+    #phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Номер телефона должен быть введен в формате: '+799999999'. Разрешено вводить до 15 символов.")
+    phone_number = models.CharField( max_length=17, blank=True, null=True, verbose_name = "Телефон ответственного от заказчика")
+    email = models.EmailField("Электронная почта ответственного от заказчика") 
+    purpose = models.ManyToManyField(CustomerGoal, verbose_name = "Целеполагание заказчика", related_name = 'applicationBuisness_customerGoal')
+    task_formulation = models.TextField("Формулировка задачи")
+    problem_formulation = models.TextField("Постановка задачи")
+    relevance = models.TextField("Актуальность и источники информации")
+    depthTask = models.ManyToManyField(DepthTask, verbose_name = "Глубина проработки задачи", related_name = "applicationBuisness_depthTash")
+    completion_dates = models.DateField("Сроки завершения работы над задачей")
+    research_purpose = models.TextField("Этапы решения задачи" ,blank = True, null = True)
+    key_words = models.CharField("Ключевые слова", max_length = 150, blank = True, null = True)
+    program = models.ManyToManyField(Program, verbose_name = "Направления, специальности", blank = True, related_name = "applicationBuisness_program")
+    wish_result = models.CharField("Ожидаемый результат", max_length = 150, blank = True, null = True)
+    other_info = models.TextField("Прочая информация", blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.customer
+
+    class Meta:
+
+        verbose_name = "Заявки от коммерческого сектора"
+        verbose_name_plural = "Заявки от коммерческого сектора"
 
 
 #####################################################################

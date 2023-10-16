@@ -11,8 +11,8 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Главная</a></li>
-        <li><a class="nav-link scrollto" href="#gallery">Просмотр заявок</a></li>
+        <li><a class="nav-link scrollto active" href="{% url 'main' %}">Главная</a></li>
+       <!-- <li><a class="nav-link scrollto" href="#gallery">Просмотр заявок</a></li>
         <li><a class="nav-link" href="{% url 'system:profile' %}">Профиль</a></li>
         {% if not user.is_authenticated%}
         <li><a class="nav-link" data-bs-toggle="modal"  data-bs-target="#exampleModal" href = "accounts/login" >Войти</a></li>
@@ -20,6 +20,7 @@
         <li><a class="nav-link" data-bs-toggle="modal"  data-bs-target="#exampleModal" href = "accounts/login" >Выйти</a></li>
 
         {% endif %}
+       -->
 <!--          <li><a class="getstarted scrollto" href="#features">Get Started</a></li>-->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

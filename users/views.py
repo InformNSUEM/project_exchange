@@ -55,8 +55,8 @@ class RegisterCustomerView(CreateView):
             profile.customer = form.cleaned_data.get('customer')
             profile.post = form.cleaned_data.get('post')
             profile.save()
-
             user = model_to_dict(user)
+            del user['groups']
             send_authorize_email.delay(user = user)
 
             if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
@@ -125,6 +125,7 @@ class RegisterStudentView(CreateView):
             profile.save()
            
             user = model_to_dict(user)
+            del user['groups']
            
             send_authorize_email.delay(user = user)
 
