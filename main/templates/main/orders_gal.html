@@ -91,9 +91,13 @@
     <section class="inner-page">
       <div class="container">
 <br>
-     <h2>Заявки органов власти Новосибирской области</h2>
+     <h2>Реестр тем, сформулированных экспертным  педагогическим сообществом НГУЭУ</h2>
 
-<iframe class="airtable-embed" src="https://airtable.com/embed/shrU7r6yDFVbWy7Ot?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1000"></iframe>
+{% if user.is_authenticated %}
+<iframe class="airtable-embed" src="https://airtable.com/embed/appVOXyQK0V9JlVtK/shrmqIZFHnrakfKN9?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1500" style="background: transparent; border: 1px solid #ccc;"></iframe>
+{% else %}
+<iframe class="airtable-embed" src="https://airtable.com/embed/appVOXyQK0V9JlVtK/shroeQFSd0mZHaHwg?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1500" style="background: transparent; border: 1px solid #ccc;"></iframe>
+ {% endif %}
 
 
 <div class="container mt-5 mb-3">
