@@ -176,3 +176,15 @@ class BaseOrderView(TemplateView):
 class AuthorityOrderView(TemplateView):
 
     template_name = "main/orders_gal.html"
+
+
+
+def register(request):
+
+
+        
+
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+
+        print(request.POST.dict())
+        return JsonResponse(request.POST.dict())

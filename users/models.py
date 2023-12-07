@@ -35,6 +35,24 @@ class CustomerUser(models.Model):
         verbose_name = "Заказчик"
         verbose_name_plural = "Заказчик"
 
+class UserProfile(models.Model):
+     
+     user = models.OneToOneField(User, verbose_name = "Пользователь", on_delete = models.CASCADE)
+     university_name = models.CharField("Наименование учебного заведения", null = False, blank = False, max_length = 255)
+     post = models.CharField("Должность или текущий статус", null = False, blank = False, max_length = 255)
+     department = models.CharField("Факультет / подразделение", null = False, blank = False, max_length = 255)
+     cathedra = models.CharField("Кафедра", null = False, blank = False, max_length = 255)
+     phone = models.CharField("Телефон", null = False, blank = False, max_length = 255)
+
+
+     def __str__(self) -> str:
+          
+          return self.user.__str__()
+    
+     class Meta:
+        verbose_name = "Профиль пользователя"
+        verbose_name_plural = "Профиль пользователя"
+
 '''
 @receiver(post_save, sender = User)
 def create_profile(sender, instance, created, **kwargs):

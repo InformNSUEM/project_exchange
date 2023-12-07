@@ -21,7 +21,7 @@ $('.login-form').on('submit', function (event){
     event.preventDefault();
     var form = $(this);
     
-   
+    console.log("LOG")
     const email = $('.login-form #username').val()
     const password = $('.login-form #password').val()
     
@@ -53,6 +53,37 @@ $('.login-form').on('submit', function (event){
 })
 
 
+$(document).ready(function() {
+    $('.register-form').on('submit', function (event){
+        //$('#register-form__error').text('')
+        console.log("LOG")
+        event.preventDefault();
+        var form = $(this);
+        
+        const url = $(".register-form").attr("data-url");
+    
+        $.ajax({
+            type: 'post',
+           
+            data: $(this).serialize(),
+        
+     
+            url: url,
+            dataType: 'json',
+            success: function (data){
+                if (data['success']){
+                    console.log("Sucess");
+                    //window.location.replace("/system/");
+                } else {
+    
+                    if (data['error']) {
+                        $('#login-form__error').show().html(data['error']);
+                    }
+                }
+            }
+        })
+    })
+    })
 
 
 

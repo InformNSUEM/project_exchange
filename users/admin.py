@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, StudentUser, CustomerUser
+from .models import User, StudentUser, CustomerUser, UserProfile
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -55,6 +55,11 @@ class StudentTypeAdmin(admin.ModelAdmin):
 
 @admin.register(CustomerUser)
 class CustomerTypeAdmin(admin.ModelAdmin):
+
+    list_display = ("user",)
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
 
     list_display = ("user",)
 
