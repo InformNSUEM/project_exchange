@@ -84,4 +84,39 @@ class AuthCustomForm(AuthenticationForm):
 
         
       
-      
+class UserCreationFormCustom(UserCreationForm):
+
+    
+    last_name = forms.CharField( label="Фамилия",max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(label = "Имя",max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    patronymic = forms.CharField(label = "Отчество",max_length=50, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label = "E-mail",required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    
+    password1 = forms.CharField(
+        label='Пароль',
+        widget=BootstrapPasswordInput(attrs={'class': 'form-control', 'placeholder': 'Введите пароль'}))
+    password2 = forms.CharField(
+        label='Повтор пароля',
+        widget=BootstrapPasswordInput(attrs={'class': 'form-control', 'placeholder': 'Повторите пароль'}))
+    
+    university_name = forms.CharField( required = True, max_length = 255)
+    post = forms.CharField( required = True, max_length = 255)
+    department = forms.CharField(required = True, max_length = 255)
+    cathedra = forms.CharField(required = True, max_length = 255)
+    phone = forms.CharField(required = True, max_length = 255)
+    
+    class Meta:
+        model = User
+        fields =  ('last_name', 'first_name', 'patronymic', 'email', 'password1', 'password2', 
+                   'university_name', 'post' , 'department', 'cathedra', 'phone') 
+
+
+
+    def clean(self):
+
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            self.add_error('email', "Эта почта уже зарегистрирована")
+            
+        return cleaned_data

@@ -59,6 +59,8 @@ $(document).ready(function() {
         console.log("LOG")
         event.preventDefault();
         var form = $(this);
+        form.find('.is-invalid').removeClass('is-invalid');
+        form.find('.invalid-feedback').remove();
         
         const url = $(".register-form").attr("data-url");
     
@@ -72,17 +74,31 @@ $(document).ready(function() {
             dataType: 'json',
             success: function (data){
                 if (data['success']){
-                    console.log("Sucess");
-                    //window.location.replace("/system/");
+                    $("#registerModal").modal("hide");
+                    $("#myModal").modal("show");
+                    $("#email_confirm").text(data.email)
+      
                 } else {
-    
-                    if (data['error']) {
-                        $('#login-form__error').show().html(data['error']);
+                    for (var fieldName in data.errors) {
+                 
+                        var field = $('#' + fieldName);
+                        field.addClass('is-invalid');
+                     
+                        field.after('<div class="invalid-feedback">' + data.errors[fieldName][0] + '</div>');
                     }
+
                 }
             }
         })
     })
+
+    $("#submitEnd").click(function () {
+
+        $("#myModal").modal("hide"); 
+        window.location.reload();
+     
+    });
+
     })
 
 
