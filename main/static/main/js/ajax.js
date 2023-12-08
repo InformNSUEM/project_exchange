@@ -40,7 +40,7 @@ $('.login-form').on('submit', function (event){
         success: function (data){
             if (data['success']){
                 console.log("Sucess");
-                window.location.replace("/system/");
+                window.location.reload();
             } else {
 
                 if (data['error']) {
