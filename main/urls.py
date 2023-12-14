@@ -1,6 +1,7 @@
 
+
 from django.urls import path, include
-from .views import MainView, GalaryNsuemView, BaseOrderView, AuthorityOrderView, Business_App, register
+from .views import MainView, GalaryNsuemView, BaseOrderView, AuthorityOrderView, Business_App, register, user_logout
 
 
 urlpatterns = [
@@ -12,6 +13,7 @@ urlpatterns = [
     path("business_application", Business_App.as_view(), name = "business_application"),
     path("register", register, name = "register"),
     path("system/", include("system.urls")),
+    path("logout", user_logout, name = "logout"),
  
         
 ] 

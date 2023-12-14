@@ -1,5 +1,5 @@
 from django.forms import model_to_dict
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.contrib.auth.views import LoginView
@@ -19,6 +19,7 @@ from .tasks import send_request_mail, send_buisness_request_mail
 from .mail import send_buisness_request_approve
 
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 class MainView(TemplateView):
 
@@ -229,4 +230,7 @@ def register(request):
    
 
       
- 
+@login_required(login_url = 'login')
+def user_logout(request):
+   logout(request)
+   return redirect("/")
