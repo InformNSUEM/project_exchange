@@ -54,6 +54,12 @@ $('.login-form').on('submit', function (event){
 
 
 $(document).ready(function() {
+
+    $("*[required]").each(function () {
+        var label = $(this).prev("label");
+        label.append(' <span class="required" style="color: red; font-size: 1em; margin-left: 5px;">*</span>');
+    });
+    
     $('.register-form').on('submit', function (event){
         //$('#register-form__error').text('')
         console.log("LOG")
