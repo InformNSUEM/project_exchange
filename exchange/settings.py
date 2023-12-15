@@ -25,6 +25,7 @@ SITE_NAME = "birzha.nsuem.ru"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django_celery_beat',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -161,8 +162,11 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 
-
+APIKEY = os.environ.get("APIKEY")
+BASEID = os.environ.get("BASEID")
+"""
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+"""
