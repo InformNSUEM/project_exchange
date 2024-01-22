@@ -1,6 +1,10 @@
 
 from exchange.celery import app
 from .mail import send_request_approve, send_buisness_request_approve
+from .models import ApplicationBuisness
+from django.db.models import F, Value, DateTimeField, Func, CharField
+from django.db.models.functions import Concat, Cast
+from django.contrib.postgres.aggregates import StringAgg
 from airtable import Airtable
 import copy
 
@@ -127,3 +131,85 @@ def update_air():
     registry_airtable.batch_delete(record_ids = record_ids)
 
     result = registry_airtable.batch_insert(records = all_data_list)
+
+
+@shared_task
+def update_business():
+    
+    queryset = (
+        ApplicationBuisness.objects.annotate(
+        programtitle=StringAgg(Concat('program__code', Value(' '), 'program__name'), delimiter=', ', ordering='program__code'),
+        purpose_list=StringAgg('purpose__name', delimiter=', '),
+        depthtask=StringAgg('depthTask__name', delimiter=', '),
+        completion_date_formatted=Func(
+        F('completion_dates'),
+        Value('dd.MM.yyyy hh:mm'),
+        function='to_char',
+        output_field=CharField()
+        ),
+        created_at_formated=Func(
+        F('created_at'),
+        Value('dd.MM.yyyy hh:mm'),
+        function='to_char',
+        output_field=CharField()
+        )).values(
+        'id',
+        'customer',
+        'department',
+        'fio',
+        'post',
+        'phone_number',
+        'email',
+        'purpose_list',
+        'task_formulation',
+        'problem_formulation',
+        'relevance',
+        'completion_date_formatted',
+        'depthtask',
+        'research_purpose',
+        'key_words',
+        'programtitle',
+        'wish_result',
+        'other_info',
+        )
+    )
+
+    registry_airtable = Airtable(base_id = BASEID, table_name = "Коммерческий сектор", api_key = APIKEY)
+    registry_data = registry_airtable.get_all() 
+    record_ids = []
+
+    for elem in registry_data:
+        record_ids.append(elem["id"])
+    registry_airtable.batch_delete(record_ids = record_ids)
+
+    insert_data = []
+
+    for obj in queryset:
+        insert_data_schema = {}
+
+        insert_data_schema["ID"] = "" if obj.get("id") == None else obj.get("id")
+        insert_data_schema["Заказчик"] = "" if obj.get("customer") == None else obj.get("customer")
+        insert_data_schema["Структурное подразделение"] = "" if obj.get("department") == None else obj.get("department")
+        insert_data_schema["ФИО заказчика"] = "" if obj.get("fio") == None else obj.get("fio")
+        insert_data_schema["Должность ответственного от заказчика"] = "" if obj.get("post") == None else obj.get("post")
+        insert_data_schema["Телефон ответственного от заказчика"] = "" if obj.get("phone_number") == None else obj.get("phone_number")
+        insert_data_schema["Электронная почта ответственного от заказчика"] = "" if obj.get("email") == None else obj.get("email")
+        insert_data_schema["Целеполагание заказчика"] = "" if obj.get("purpose_list") == None else obj.get("purpose_list")
+        insert_data_schema["Формулировка задачи"] = "" if obj.get("task_formulation") == None else obj.get("task_formulation")
+        insert_data_schema["Постановка задачи"] = "" if obj.get("problem_formulation") == None else obj.get("problem_formulation")
+        insert_data_schema["Актуальность и источники информации"] = "" if obj.get("relevance") == None else obj.get("relevance")
+        insert_data_schema["Глубина проработки задачи"] = "" if obj.get("depthtask") == None else obj.get("depthtask")
+        insert_data_schema["Сроки завершения работы над задачей"] = "" if obj.get("completion_date_formatted") == None else obj.get("completion_date_formatted")
+        insert_data_schema["Этапы решения задачи"] = "" if obj.get("research_purpose") == None else obj.get("research_purpose")
+        insert_data_schema["Ключевые слова"] = "" if obj.get("key_words") == None else obj.get("key_words")
+        insert_data_schema["Направления, специальности"] = "" if obj.get("programtitle") == None else obj.get("programtitle")
+        insert_data_schema["Ожидаемый результат"] = "" if obj.get("wish_result") == None else obj.get("wish_result")
+        insert_data_schema["Прочая информация"] = "" if obj.get("other_info") == None else obj.get("other_info")
+
+        insert_data.append(insert_data_schema)
+
+    result = registry_airtable.batch_insert(records = insert_data)
+
+    
+
+        
