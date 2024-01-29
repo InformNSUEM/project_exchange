@@ -37,8 +37,6 @@ def update_air():
 
     data_package = package_airtable.get_all(view= view)
 
-
-
     all_data = {
         "Тема":"",
         "Заказчик": "",
@@ -53,7 +51,6 @@ def update_air():
 
 
     for elem in data_package:
-        
         _all_data = copy.deepcopy(all_data)
 
         _all_data["Тема"] = "" if elem["fields"].get("Тема") == None else elem["fields"]["Тема"]
@@ -71,7 +68,6 @@ def update_air():
 
 
     for elem in data_authority:
-
         _all_data = copy.deepcopy(all_data)
     
         _all_data["Тема"] = "" if elem["fields"].get("Формулировка задачи") == None else elem["fields"]["Формулировка задачи"]
@@ -88,7 +84,6 @@ def update_air():
     data_nsuem = nsuem_airtable.get_all(view = view)
 
     for elem in data_nsuem:
-
         _all_data = copy.deepcopy(all_data)
     
         _all_data["Тема"] = "" if elem["fields"].get("Тема / запрос") == None else elem["fields"]["Тема / запрос"]
@@ -104,9 +99,7 @@ def update_air():
 
     data_four = four_airtable.get_all(view = view)
 
-
     for elem in data_four:
-
         _all_data = copy.deepcopy(all_data)
     
         _all_data["Тема"] = "" if elem["fields"].get("Задача (проблематика)") == None else elem["fields"]["Задача (проблематика)"]
@@ -119,18 +112,29 @@ def update_air():
         _all_data["Тип реестра"] = "Заявки Тип 4"
 
         all_data_list.append(_all_data)
-
-    
+ 
     registry_data = registry_airtable.get_all() 
+    registry_data_list = []
+    for item in registry_data:
+        registry_dict = {
+            "Тема": "" if item["fields"].get("Тема") == None else item["fields"]["Тема"],
+            "Заказчик": "" if item["fields"].get("Заказчик") == None else item["fields"]["Заказчик"],
+            "Постановка цели исследования": "" if item["fields"].get("Постановка цели исследования") == None else item["fields"]["Постановка цели исследования"],
+            "Задачи исследования": "" if item["fields"].get("Задачи исследования") == None else item["fields"]["Задачи исследования"],
+            "Глубина проработки задачи": "" if item["fields"].get("Глубина проработки задачи") == None else item["fields"]["Глубина проработки задачи"],
+            "Ожидаемый результат": "" if item["fields"].get("Ожидаемый результат") == None else item["fields"]["Ожидаемый результат"],
+            "Тип реестра": "" if item["fields"].get("Тип реестра") == None else item["fields"]["Тип реестра"],
+        }
+        registry_data_list.append(registry_dict)
+    
+    unic_list = []
 
+    for item in all_data_list:
+        if item not in registry_data_list:
+            unic_list.append(item)
     record_ids = []
 
-    for elem in registry_data:
-        record_ids.append(elem["id"])
-
-    registry_airtable.batch_delete(record_ids = record_ids)
-
-    result = registry_airtable.batch_insert(records = all_data_list)
+    result = registry_airtable.batch_insert(records = unic_list)
 
 
 @shared_task
