@@ -2,6 +2,7 @@
 from exchange.celery import app
 from .mail import send_request_approve, send_buisness_request_approve
 from .models import ApplicationBuisness
+from .airwebhook import send_to_webhook
 from django.db.models import F, Value, DateTimeField, Func, CharField
 from django.db.models.functions import Concat, Cast
 from django.contrib.postgres.aggregates import StringAgg
@@ -17,6 +18,10 @@ def send_request_mail(customer_request):
 @app.task
 def send_buisness_request_mail(mail_data):
     send_buisness_request_approve(mail_data)
+
+@app.task
+def send_to_webhook_task(postData):
+    send_to_webhook(postData)
 
 
 

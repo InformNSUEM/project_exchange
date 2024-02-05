@@ -15,7 +15,7 @@ from django.views.generic.edit import CreateView
 
 from .validators import BuisnessAppValidator, UserValidator
 
-from .tasks import send_request_mail, send_buisness_request_mail
+from .tasks import send_to_webhook_task, send_buisness_request_mail
 from .mail import send_buisness_request_approve
 
 from django.conf import settings
@@ -155,8 +155,9 @@ class Business_App(View):
                 self.data.update({"id":form_data_instance.id})
                 self.postData.update({"id":form_data_instance.id})
                 
-
+  
                 send_buisness_request_mail.delay(self.postData) 
+                send_to_webhook_task.delay(self.postData) 
 
                 return JsonResponse(self.data)
 
