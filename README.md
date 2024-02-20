@@ -20,7 +20,12 @@ cd /Документы/project_exchange
 ```sh
 git pull
 ```
-Далее нужно сбилдить и запустить Docker
+Далее нудно сбилдить и запустить Docker
 ```sh
-sudo docker-compose up -d --build
+docker-compose up -d --build
 ```
+## Админка
+Адрес для входа: https://birzha.nsuem.ru/admin/
+
+Логин: gintoft.a.s@gmail.com
+Пароль: adminadmin
