@@ -22,5 +22,5 @@ git pull
 ```
 Далее нудно сбилдить и запустить Docker
 ```sh
-docker-compose up -d --build
+sudo docker-compose up -d --build
 ```
