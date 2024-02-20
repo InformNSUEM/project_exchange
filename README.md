@@ -20,7 +20,7 @@ cd /Документы/project_exchange
 ```sh
 git pull
 ```
-Далее нудно сбилдить и запустить Docker
+Далее нужно сбилдить и запустить Docker
 ```sh
 sudo docker-compose up -d --build
 ```
