@@ -22,7 +22,7 @@ git pull
 ```
 Далее нудно сбилдить и запустить Docker
 ```sh
-docker-compose up -d --build
+sudo docker-compose up -d --build
 ```
 ## Админка
 Адрес для входа: https://birzha.nsuem.ru/admin/
