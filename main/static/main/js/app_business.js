@@ -1,9 +1,6 @@
 $(document).ready(function () {
 
-    $("*[required]").each(function () {
-        var label = $(this).prev("label");
-        label.append(' <span class="required" style="color: red; font-size: 1em; margin-left: 5px;">*</span>');
-    });
+
     
     var form = $("#business_application");
     var list_group = $(".list-group");

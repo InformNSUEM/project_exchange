@@ -1,0 +1,89 @@
+{% load static %}
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center align-items-center mb-3">
+          <h5 class="modal-title"  id="registerModalLabel">Регистрация</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" style="position: absolute; top: 20px; right: 20px;"></button>
+        </div>
+        
+        <div class="modal-body">
+            <form class = "register-form" data-url="{% url 'register' %}" id="register-form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="last_name">Фамилия</label>
+                  <input type="text" class="form-control" id="last_name" required name="last_name" placeholder="Введите фамилию">
+                </div>
+                <div class="form-group">
+                    <label for="first_name">Имя</label>
+                    <input type="text" class="form-control" id="first_name" required name="first_name" placeholder="Введите имя">
+                  </div>
+                <div class="form-group">
+                    <label for="patronymic">Отчество</label>
+                <input type="text" class="form-control" id="patronymic" required name="patronymic" placeholder="Введите отчество">
+                </div>
+                <div class="form-group">
+                    <label for="university_name">Наименование учебного заведения</label>
+                <input type="text" class="form-control" id="university_name" required name="university_name" placeholder="Введите наименование">
+                </div>
+                <div class="form-group">
+                    <label for="post">Должность или текущий статус (студент)</label>
+                <input type="text" class="form-control" id="post" required name="post" placeholder="Введите должность или текущий статус">
+                </div>
+                <div class="form-group">
+                    <label for="department">Факультет / подразделение</label>
+                <input type="text" class="form-control" id="department" required name="department" placeholder="Введите факультет / подразделение">
+                </div>
+                <div class="form-group">
+                    <label for="cathedra">Кафедра</label>
+                <input type="text" class="form-control" id="cathedra" required name="cathedra" placeholder="Введите кафедру">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                <input type="text" class="form-control" id="phone" required name="phone" placeholder="Введите телефон">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" required name="email" placeholder="Введите E-mail">
+                </div>
+                <div class="form-group">
+                  <label for="password1">Пароль</label>
+                  <input type="password" class="form-control" id="password1" required name="password1" placeholder="Введите пароль">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Повтор пароля</label>
+                    <input type="password" class="form-control" id="password2" required name="password2" placeholder="Повторите пароль">
+                  </div>
+               
+        </div>
+        <div class=" alert alert-danger login-form__error text-center" id="login-form__error" style="display: none"; role = "alert"></div>
+        <div class="modal-footer d-flex justify-content-center align-items-center mb-3">
+            <button type="submit" class="btn btn-primary text-center">Зарегистрироваться</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center align-items-center mb-3">
+                <h4 class="modal-title">Подтверждение регистрации</h4> 
+            </div>
+
+            <div class="modal-body">
+                <p>Вы успешно зарегистрированы!</p> <br> 
+                <p> На почту <b><span id = "email_confirm"></span></b> было отправлено пиьсмо для подтверждения данных. 
+                  <br>
+                  Перейдите по ссылке в письме, чтобы получить возможность входа в систему</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary text-center" id="submitEnd">Завершить</button>
+            </div>
+        </div>
+    </div>
+</div>

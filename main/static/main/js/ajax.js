@@ -21,7 +21,7 @@ $('.login-form').on('submit', function (event){
     event.preventDefault();
     var form = $(this);
     
-   
+    console.log("LOG")
     const email = $('.login-form #username').val()
     const password = $('.login-form #password').val()
     
@@ -40,7 +40,7 @@ $('.login-form').on('submit', function (event){
         success: function (data){
             if (data['success']){
                 console.log("Sucess");
-                window.location.replace("/system/");
+                window.location.reload();
             } else {
 
                 if (data['error']) {
@@ -53,6 +53,59 @@ $('.login-form').on('submit', function (event){
 })
 
 
+$(document).ready(function() {
+
+    $("*[required]").each(function () {
+        var label = $(this).prev("label");
+        label.append(' <span class="required" style="color: red; font-size: 1em; margin-left: 5px;">*</span>');
+    });
+    
+    $('.register-form').on('submit', function (event){
+        //$('#register-form__error').text('')
+        console.log("LOG")
+        event.preventDefault();
+        var form = $(this);
+        form.find('.is-invalid').removeClass('is-invalid');
+        form.find('.invalid-feedback').remove();
+        
+        const url = $(".register-form").attr("data-url");
+    
+        $.ajax({
+            type: 'post',
+           
+            data: $(this).serialize(),
+        
+     
+            url: url,
+            dataType: 'json',
+            success: function (data){
+                if (data['success']){
+                    $("#registerModal").modal("hide");
+                    $("#myModal").modal("show");
+                    $("#email_confirm").text(data.email)
+      
+                } else {
+                    for (var fieldName in data.errors) {
+                 
+                        var field = $('#' + fieldName);
+                        field.addClass('is-invalid');
+                     
+                        field.after('<div class="invalid-feedback">' + data.errors[fieldName][0] + '</div>');
+                    }
+
+                }
+            }
+        })
+    })
+
+    $("#submitEnd").click(function () {
+
+        $("#myModal").modal("hide"); 
+        window.location.reload();
+     
+    });
+
+    })
 
 
 

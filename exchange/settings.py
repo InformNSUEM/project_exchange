@@ -25,6 +25,7 @@ SITE_NAME = "birzha.nsuem.ru"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django_celery_beat',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -156,10 +157,15 @@ CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_BROKER_TRANSPORT_OPTIONS = {"visibility_timeout" : 3600}
 #CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_RESULT_BACKEND = f"redis://redis:6379"
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+APIKEY = os.environ.get("APIKEY")
+BASEID = os.environ.get("BASEID")
+AIR_WEBHOOK_URL = os.environ.get("AIR_WEBHOOK_URL")
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True

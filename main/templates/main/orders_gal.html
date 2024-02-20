@@ -91,9 +91,13 @@
     <section class="inner-page">
       <div class="container">
 <br>
-     <h2>Заявки органов власти Новосибирской области</h2>
+     <h2>Реестр тем, сформулированных экспертным  педагогическим сообществом НГУЭУ</h2>
 
-<iframe class="airtable-embed" src="https://airtable.com/embed/shrU7r6yDFVbWy7Ot?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1000"></iframe>
+{% if user.is_authenticated %}
+<iframe class="airtable-embed" src="https://airtable.com/embed/appVOXyQK0V9JlVtK/shrmqIZFHnrakfKN9?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1500" style="background: transparent; border: 1px solid #ccc;"></iframe>
+{% else %}
+<iframe class="airtable-embed" src="https://airtable.com/embed/appVOXyQK0V9JlVtK/shroeQFSd0mZHaHwg?backgroundColor=purple&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="1500" style="background: transparent; border: 1px solid #ccc;"></iframe>
+ {% endif %}
 
 
 <div class="container mt-5 mb-3">
@@ -137,26 +141,10 @@
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-
-    <div class="container py-4">
-      <div class="copyright">
-        &copy; ФГБОУ ВО "НГУЭУ", Планово-аналитический отдел
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/ -->
-<!--        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  <
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  {% include "main/pages_parts/vendor_js.html" %}
   <!-- Vendor JS Files -->
   <script src="{% static 'main/vendor/aos/aos.js' %}"></script>
   <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -166,6 +154,7 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'main/js/main.js' %}"></script>
+  <script src="{% static 'main/js/links.js' %}"></script>
 
 </body>
 
